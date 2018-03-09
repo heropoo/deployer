@@ -1,0 +1,16 @@
+#!/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ttt
+ * Date: 2018/3/9
+ * Time: 16:50
+ */
+
+require 'Psr4AutoloaderClass.php';
+$loader = new Psr4AutoloaderClass();
+$loader->addNamespace('App', __DIR__.'/app');
+$loader->register();
+
+$test = new \App\Commands\Test();
+
