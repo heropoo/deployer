@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /var/www/cloud-school
+/usr/bin/sudo /usr/bin/git pull origin master

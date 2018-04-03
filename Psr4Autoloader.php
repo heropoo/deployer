@@ -6,7 +6,7 @@
  * Time: 16:49
  */
 
-class Psr4AutoloaderClass
+class Psr4Autoloader
 {
     /**
      * An associative array where the key is a namespace prefix and the value
