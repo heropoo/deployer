@@ -9,8 +9,8 @@
 $realm = 'heropoo-deployer';
 
 $users = [
-    'admin'=>'dd2b610a3428f6931f3cefb41dc2056d',     //admin123
-    'demo'=>'26c0b69f038e0e1fd858a6f283434cb4'   //demo123
+    'admin'=>'7e90433b5c0245d54e7632cbe90e1133',     //admin123
+    'demo'=>'83a582b846c832d7d876194faf4c7593'   //demo123
 ];
 
 $username = trim($_SERVER['PHP_AUTH_USER']);
