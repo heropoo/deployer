@@ -16,4 +16,4 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/git
 ```
 
 
-3. 开发浏览器访问，输入git tag版本号发布。
+3. 在浏览器访问`index.php`，输入git tag版本号发布吧~
