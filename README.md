@@ -1,8 +1,16 @@
 # deployer
-一个使用git的web-hook的简易项目发布工具
+一个使用git的简易项目发布工具
 
-### 实现思路
-1. 使用git创建一个项目发布专用分支，例如`releases`。
-2. 在目标服务器上clone项目仓库到项目的web目录。
-3. 项目发布人员在项目发版时合并项目代码到发布专用分支，并向目标服务器发起http的post请求。
-4. 目标服务器接收到post请求之后，根据请求参数执行钩子脚本，完成项目代码的部署。
+## 使用方法
+1. 修改`public/index.php`中的`$path`，配置成你的项目目录
+2. 找到你的web服务器解析php的用户，比我的是www-data，添加sudoers
+```
+visudo
+```
+--------------------------------
+...
+
+www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/git
+
+
+3. 开发浏览器访问，输入git tag版本号发布。
