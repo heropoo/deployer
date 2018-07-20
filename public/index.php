@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $path = dirname(__DIR__);
     $log_file = $path.'/runtime/logs/deploy-'.date('Y-m-d').'.log';
 
-    error_log("User $username deploy tag `$tag` at ".date('Y-m-d H:i:s'), 3, $log_file);
+    error_log("User `$username` deploy tag `$tag` at ".date('Y-m-d H:i:s'), 3, $log_file);
 
     $descriptorspec = array(
         0 => array("pipe", "r"),  
