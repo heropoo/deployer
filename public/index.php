@@ -94,12 +94,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         if($return_value === 0){
             echo PHP_EOL."Command returned success.";
-            error_log("Command returned success.".PHP_EOL, 3, $log_file);
+            error_log(" Command returned success.".PHP_EOL, 3, $log_file);
         }else{
-            echo PHP_EOL."Command returned failed ".$return_value. ' '.$error_msg;
-            error_log("Command returned failed ".$return_value. ' '.$error_msg.PHP_EOL, 3, $log_file);
+            echo PHP_EOL."Command returned failed ".$return_value;
+            error_log(" Command returned failed ".$return_value. ' '.$error_msg.PHP_EOL, 3, $log_file);
         }
-       
     }
     echo '</pre>';
 }
