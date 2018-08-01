@@ -90,7 +90,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $res = json_decode($res, 1);
 
-        echo $host.':<br>';
+        echo $host.': ';
+        echo $res['data']['return_value'] === 0 ? '✔ Success' : '❌ Failed';
         echo '<pre>';
         var_dump($res);
         echo '</pre>';
