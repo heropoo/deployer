@@ -2,7 +2,7 @@
 一个使用git的简易项目发布工具
 
 ## 使用方法
-1. 修改`public/index.php`中的`$path`，配置成你的项目目录
+1. 修改`server.php`中的`$path`，配置成你的项目目录
 
 2. 添加php脚本的执行用户sudoers中
 
