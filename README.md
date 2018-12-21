@@ -32,4 +32,6 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/git
 
 2. 修改config
 
-3. 访问部署机器的web站点，输入git tag版本号发布吧~
+3. 分别配置好部署机器和目标机器的web服务
+
+4. 访问部署机器的web站点，输入git tag版本号发布吧~
