@@ -6,7 +6,7 @@
  * Time: 11:42
  */
 
-return [
+$config = [
     'title' => 'Deployer',    //部署系统标题
 
     'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer-deployer-' . date('Y-m-d') . '.log',    //日志路径
@@ -38,5 +38,16 @@ return [
 
     'current_server'=>'prod-1', //在目标机器部署代码时，指定下当前机器
 
-    'users' => require __DIR__ . '/users.php', //管理员账号
+    'users' => [ //管理员账号
+        //以下两个示例账户 上线请删除或者修改！！
+        'admin'=>'$2y$10$SgqN4g1/XR/3I.GnduKHy.KGo5uhfzLigFgSvei1gcr7tmHL9rrhm',     //admin123
+        'demo'=>'$2y$10$HMB7SEsPzCHdA2mrm.Nd5eWrupWB20bi2YSfUgUq2M8CNUInhdnme'   //demo123
+    ],
 ];
+
+if(file_exists(__DIR__.'/app.local.php')){
+    $config_local = require_once __DIR__.'/app.local.php';
+    $config = array_merge($config, $config_local);
+}
+
+return $config;
