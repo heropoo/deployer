@@ -1,3 +1,2 @@
 .idea/
-
-app-local.php
+config/app.local.php
