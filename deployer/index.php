@@ -120,7 +120,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 }
 
-echo '</body></html>';
+echo '
+<p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; 2018 by <a href="https://github.com/heropoo/deployer">Heropoo Deployer</a></p>
+</body></html>';
 
 function sub_curl($url, $data)
 {
