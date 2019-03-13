@@ -59,15 +59,15 @@ function git_execute(array $cmds, $project)
 
     $current_server = $config['current_server'];
     $current_server_user = $config['server_users'][$current_server];
-    if($current_server_user == 'root'){
-        $cmd = implode(' && ', $cmds);
-    }else{
+    //if($current_server_user == 'root'){
+    //    $cmd = implode(' && ', $cmds);
+    //}else{
         $cmd = '';
         foreach ($cmds as $cmd_item){
             $cmd .= "&& sudo -u $current_server_user ".$cmd_item;
         }
         $cmd = substr($cmd, 3);
-    }
+    //}
 
     $path = $config['project_paths'][$project];
     $log_file = $config['server_log_file'];
