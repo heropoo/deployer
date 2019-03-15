@@ -1,2 +1,4 @@
 .idea/
 config/app.local.php
+composer.lock
+vendor/
