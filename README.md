@@ -18,6 +18,9 @@
     └── index.php			#目标机器机器web入口文件
 ```
 
+## 发布流程说明
+![Deployer](./docs/deployer.png "Deployer")
+
 ## 配置步骤
 1. 添加php脚本的执行用户到sudoers中
 
@@ -35,3 +38,5 @@ www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/git
 3. 分别配置好部署机器和目标机器的web服务
 
 4. 访问部署机器的web站点，输入git tag版本号发布吧~
+
+
