@@ -1,6 +1,9 @@
 # Deployer
 一个使用git的简易项目发布工具
 
+## 发布流程说明
+![Deployer发布流程说明](./docs/deployer.png "Deployer发布流程说明")
+
 ## 目录说明
 ```
 .
@@ -17,9 +20,6 @@
 └── server			#目标机器机器web目录
     └── index.php			#目标机器机器web入口文件
 ```
-
-## 发布流程说明
-![Deployer发布流程说明](./docs/deployer.png "Deployer发布流程说明")
 
 ## 配置步骤
 1. 添加php脚本的执行用户到sudoers中
