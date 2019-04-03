@@ -24,7 +24,7 @@
 ## 配置步骤
 1. 添加php脚本的执行用户到sudoers中
 
-比如你使用nginx+php-fpm的服务器架构，你的php-fpm的用户是www-data
+比如你的Apache或者php-fpm服务的用户是www-data
 ```
 visudo
 --------------------------------
