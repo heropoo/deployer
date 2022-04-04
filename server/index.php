@@ -10,8 +10,6 @@
 
 $config = require dirname(__DIR__).'/config/app.php';
 
-date_default_timezone_set('Asia/Shanghai');
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $token = isset($_POST['token']) ? trim($_POST['token']) : '';

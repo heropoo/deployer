@@ -5,6 +5,8 @@
  * Time: 11:42
  */
 
+date_default_timezone_set('Asia/Shanghai');
+
 $config = [
     'title' => 'Deployer',    //部署系统标题
 
