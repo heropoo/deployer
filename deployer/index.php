@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: ttt
+ * User: heropoo
  * Date: 2018/4/23
  * Time: 16:34
  */
@@ -21,7 +20,7 @@ $username = isset($_SERVER['PHP_AUTH_USER']) ? trim($_SERVER['PHP_AUTH_USER']) :
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('WWW-Authenticate: Basic realm="' . $realm . '"');
     header('HTTP/1.0 401 Unauthorized');
-    die('401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again 1</button>');
+    die('401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login</button>');
 } else {
     $pwd = $config['secret_key'].trim($_SERVER['PHP_AUTH_PW']);
     if(!key_exists($username, $users) || !password_verify($pwd,  $users[$username])){
