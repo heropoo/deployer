@@ -8,12 +8,12 @@
 //ini_set('display_errors', 'On');
 //error_reporting(E_ALL);
 
-$config = require dirname(__DIR__).'/config/app.php';
+$config = require dirname(__DIR__) . '/config/app.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $token = isset($_POST['token']) ? trim($_POST['token']) : '';
-    if ($token !== md5($config['secret_key'].date('Y-m-d H'))) {
+    if ($token !== md5($config['secret_key'] . date('Y-m-d H'))) {
         return_json(1, 'error token');
     }
 
@@ -57,15 +57,15 @@ function git_execute(array $cmds, $project)
     $current_server = $config['current_server'];
     $current_server_user = $config['server_users'][$current_server];
     $cmd = '';
-    foreach ($cmds as $cmd_item){
-        $cmd .= "&& sudo -u $current_server_user ".$cmd_item;
+    foreach ($cmds as $cmd_item) {
+        $cmd .= "&& sudo -u $current_server_user " . $cmd_item;
     }
     $cmd = substr($cmd, 3);
 
     $path = $config['project_paths'][$project];
     $log_file = $config['server_log_file'];
 
-    error_log("[".date('Y-m-d H:i:s')."] Deploy execute `$cmd` in `$path`", 3, $log_file);
+    error_log("[" . date('Y-m-d H:i:s') . "] Deploy execute `$cmd` in `$path`", 3, $log_file);
 
     $descriptorspec = array(
         0 => array("pipe", "r"),  // 标准输入，子进程从此管道中读取数据
