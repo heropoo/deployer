@@ -114,10 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo $projects[$dst_project] . ' ' . $host . ': ';
         echo $res['data']['return_value'] === 0 ? '✔ Success' : '❌ Failed';
         if (strlen($res['data']['success_msg']) > 0) {
-            echo 'output: <pre>' . PHP_EOL . $res['data']['success_msg'] . '</pre>';
+            echo '<br />output: <pre>' . PHP_EOL . $res['data']['success_msg'] . '</pre>';
         }
         if (strlen($res['data']['error_msg']) > 0) {
-            echo 'error message: <pre>' . PHP_EOL . $res['data']['error_msg'] . '</pre>';
+            echo '<br />error message: <pre>' . PHP_EOL . $res['data']['error_msg'] . '</pre>';
         }
         echo '<p>--------------------' . date('Y-m-d H:i:s') . '--------------------</p>';
     }
