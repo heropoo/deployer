@@ -30,7 +30,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     }
 }
 
-$tag = isset($_POST['tag']) ? trim($_POST['tag']) : '';
+$tag = isset($_POST['tag']) ? trim($_POST['tag']) : ''; //master && sudo git pull --recurse-submodules
 $dst_host = isset($_POST['host']) ? trim($_POST['host']) : '';
 $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 
@@ -86,11 +86,46 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 
     <div class="row">
         <h2>代码发布</h2>
-        <form action="" method="post" class="form form-inline">
+        <form action="" method="post" class="form form-inline" id="publishForm">
             <div class="form-group">
                 <label for="">版本:</label>
-                <input class="form-control" type="text" name="tag" value="<?= $tag ?>" placeholder="请输入tag" required>
+                <input class="form-control" type="text" name="tag" value="<?= $tag ?>" style="width: 32rem;" placeholder="请输入tag" required>
             </div>
+            <div class="form-group">
+                <label for="">项目:</label>
+                <select name="project" class="form-control">
+                    <?php foreach ($projects as $project => $project_name): ?>
+                        <option value="<?= $project ?>"
+                                <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">机器:</label>
+                <select name="host" class="form-control">
+                    <option value="">全部</option>
+                    <?php foreach ($hosts as $host => $url): ?>
+                        <option value="<?= $host ?>" <?php if ($dst_host === $host): ?>selected<?php endif; ?>><?= $host ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for=""></label>
+                <button type="submit" class="btn btn-primary">发布</button>
+            </div>
+
+            <input type="hidden" name="action" value="checkout">
+
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <h2>快速代码发布</h2>
+        <form action="" method="post" class="form form-inline" id="fastPublishForm">
+            <input type="hidden" name="tag" value="master && sudo git pull --recurse-submodules">
             <div class="form-group">
                 <label for="">项目:</label>
                 <select name="project" class="form-control">
