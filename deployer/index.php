@@ -79,10 +79,8 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
                 <button type="submit" class="btn btn-info">查询</button>
             </div>
         </form>
+        <hr>
     </div>
-
-
-    <hr>
 
     <div class="row">
         <h2>代码发布</h2>
@@ -118,9 +116,10 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
             <input type="hidden" name="action" value="checkout">
 
         </form>
+        <hr>
     </div>
 
-    <hr>
+
 
     <div class="row">
         <h2>快速代码发布</h2>
@@ -153,9 +152,8 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
             <input type="hidden" name="action" value="checkout">
 
         </form>
+        <hr>
     </div>
-
-    <hr>
 
     <div class="row">
 <?php
