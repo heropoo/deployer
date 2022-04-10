@@ -54,6 +54,7 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
         .main{
             padding: 2rem 4rem;
         }
+        .form-control{margin-right: 10px}
         /*pre {*/
         /*    overflow-x: auto;*/
         /*    width: 600px;*/
@@ -87,7 +88,7 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
         <form action="" method="post" class="form form-inline" id="publishForm">
             <div class="form-group">
                 <label for="">版本:</label>
-                <input class="form-control" type="text" name="tag" value="<?= $tag ?>" style="width: 32rem;" placeholder="请输入tag" required>
+                <input class="form-control" type="text" name="tag" value="<?= $tag ?>" style="width: 32rem;" placeholder="请输入tag、commit_id 或者 分支" required>
             </div>
             <div class="form-group">
                 <label for="">项目:</label>
@@ -119,10 +120,9 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
         <hr>
     </div>
 
-
-
     <div class="row">
         <h2>快速代码发布</h2>
+        <span class="help-block">快速使用主分支代码发布</span>
         <form action="" method="post" class="form form-inline" id="fastPublishForm">
             <input type="hidden" name="tag" value="master && sudo git pull --recurse-submodules">
             <div class="form-group">
