@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $res = json_decode($res, 1);
 
-        echo $projects[$dst_project] . ' ' . $host . ': ';
+        echo $projects[$dst_project] . ' => ' . $host . ': ';
         echo $res['data']['return_value'] === 0 ? '✔ Success' : '❌ Failed';
         echo '<br /><br />';
         if (strlen($res['data']['success_msg']) > 0) {
