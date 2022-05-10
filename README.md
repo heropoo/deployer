@@ -14,7 +14,7 @@
 │   └── app.php				#示例配置文件
 ├── deployer		#部署机器web目录
 │   └── index.php			#部署机器web入口文件
-├── generate_password.php	#一个命令行下生成密码的工具
+├── user_add.php	#命令行下生成添加/修改用户账号及密码的工具
 ├── runtime			
 │   └── logs		#临时文件日志目录
 └── server			#目标机器机器web目录
