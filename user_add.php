@@ -35,4 +35,8 @@ if(empty($users) || !is_array($users)){
 $users[$username] = $pwd;
 
 $res = file_put_contents($users_config_file, "<?php\nreturn ".var_export($users, true).";");
-var_dump($res);
+if($res){
+    echo "success\n";
+}else{
+    echo "failed\n";
+}
