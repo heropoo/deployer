@@ -8,7 +8,7 @@
 //ini_set('display_errors', 'On');
 //error_reporting(E_ALL);
 
-$config = require dirname(__DIR__) . '/config/app.php';
+$config = require dirname(__DIR__) . '/src/bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

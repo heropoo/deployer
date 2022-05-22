@@ -6,7 +6,23 @@
  * Time: 12:21
  */
 
-$config = require __DIR__ . '/config/app.php';
+$config = require __DIR__ . '/src/bootstrap.php';
+
+$config_path = __DIR__ . '/config';
+
+if (!file_exists($config_path . '/app.local.php')) {
+    echo "Create local config './app.local.php' ";
+    $local_config_content = file_get_contents($config_path . '/app.php');
+    $new_secret_key = generate_random_str(32);
+    $local_config_content = str_replace(
+        "'secret_key' => ''", "'secret_key' => '{$new_secret_key}'",
+        $local_config_content
+    );
+    $res = file_put_contents($config_path . '/app.local.php', $local_config_content);
+    if ($res) echo " Ok\n"; else die(" Failed");
+}
+
+$config = require __DIR__ . '/src/bootstrap.php';
 
 $stdin = fopen("php://stdin", "r");
 $s = "Input username: ";
@@ -28,15 +44,15 @@ if (file_exists($users_config_file)) {
     $users = require $users_config_file;
 }
 
-if(empty($users) || !is_array($users)){
+if (empty($users) || !is_array($users)) {
     $users = [];
 }
 
 $users[$username] = $pwd;
 
-$res = file_put_contents($users_config_file, "<?php\nreturn ".var_export($users, true).";");
-if($res){
+$res = file_put_contents($users_config_file, "<?php\nreturn " . var_export($users, true) . ";");
+if ($res) {
     echo "success\n";
-}else{
+} else {
     echo "failed\n";
 }

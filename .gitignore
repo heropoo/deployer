@@ -3,3 +3,4 @@ config/app.local.php
 config/user.local.php
 composer.lock
 vendor/
+*.bk.php

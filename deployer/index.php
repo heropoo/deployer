@@ -5,7 +5,7 @@
  * Time: 16:34
  */
 
-$config = require dirname(__DIR__) . '/config/app.php';
+$config = require dirname(__DIR__) . '/src/bootstrap.php';
 
 $realm = md5($config['secret_key']);
 

@@ -5,15 +5,14 @@
  * Time: 11:42
  */
 
-date_default_timezone_set('Asia/Shanghai');
-
-$config = [
+return [
     'title' => 'Deployer',    //部署系统标题
+    'timezone' => 'Asia/Shanghai',
 
     'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer-deployer-' . date('Y-m-d') . '.log',    //日志路径
     'server_log_file' => dirname(__DIR__) . '/runtime/logs/deployer-server-' . date('Y-m-d') . '.log',    //日志路径
 
-    'secret_key' => 'W4sxjDXyLcnoNWauDH3pI0nrdSdmYUKL',       //加密密钥 上线请修改！！
+    'secret_key' => '',       //加密密钥
 
     'projects' => [   //发布项目列表
         'project1' => '示例项目1',
@@ -39,20 +38,5 @@ $config = [
 
     'current_server' => 'prod-1', //在目标机器部署代码时，指定下当前机器
 
-    'users' => [ //管理员账号
-        //以下示例账户 上线请删除或者修改！！
-        'demo' => '$2y$10$HMB7SEsPzCHdA2mrm.Nd5eWrupWB20bi2YSfUgUq2M8CNUInhdnme'   //demo123
-    ],
+    'users' => [], //管理员账号,
 ];
-
-if (file_exists(__DIR__ . '/app.local.php')) {
-    $config_local = require __DIR__ . '/app.local.php';
-    $config = array_merge($config, $config_local);
-}
-
-if (file_exists(__DIR__ . '/user.local.php')) {
-    $users = require __DIR__ . '/user.local.php';
-    $config['users'] = $users;
-}
-
-return $config;
