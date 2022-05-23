@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'tag' => $tag,
             'project' => $dst_project
         ];
-        $res = sub_curl($url, $data);
+        $res = curl_post($url, $data);
 
         $res = json_decode($res, 1);
 
@@ -191,21 +191,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         echo '<p>--------------------' . date('Y-m-d H:i:s') . '--------------------</p>';
     }
-}
-
-function sub_curl($url, $data)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
 }
 ?>
     </div>

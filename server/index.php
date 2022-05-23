@@ -103,10 +103,3 @@ function git_execute(array $cmds, $project)
     }
     return [];
 }
-
-function return_json($code, $msg, $data = [])
-{
-    header('Content-type: application/json;charset=utf-8');
-    echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
-    die();
-}
