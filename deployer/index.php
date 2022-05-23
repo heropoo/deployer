@@ -12,8 +12,9 @@ $realm = md5($config['secret_key']);
 $users = $config['users'];
 
 $projects = $config['projects'];
+var_dump($projects);exit;
 
-$hosts = $config['servers'];
+//$hosts = $config['servers'];
 
 $username = isset($_SERVER['PHP_AUTH_USER']) ? trim($_SERVER['PHP_AUTH_USER']) : '';
 
@@ -72,9 +73,9 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
             <div class="form-group">
                 <label for="">项目:</label>
                 <select name="project" class="form-control" style="width: 20rem">
-                    <?php foreach ($projects as $project => $project_name): ?>
-                        <option value="<?= $project ?>"
-                                <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
+                    <?php foreach ($projects as $project_id => $project): ?>
+                        <option value="<?= $project_id ?>"
+                                <?php if ($dst_project === $project_id): ?>selected<?php endif; ?>><?= $project['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
                 <button type="submit" class="btn btn-info">查询</button>

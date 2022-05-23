@@ -1,0 +1,21 @@
+{
+    "name": "heropoo/deployer",
+    "description": "A deployment tool using git",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Deployer\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "heropoo",
+            "email": "aiyouyou1000@163.com"
+        }
+    ],
+    "require": {}
+}

@@ -22,6 +22,12 @@ if (!file_exists($config_path . '/app.local.php')) {
     if ($res) echo " Ok\n"; else die(" Failed");
 }
 
+if (!file_exists($config_path . '/projects.local.php')) {
+    echo "Create local projects config './projects.local.php' ";
+    $res = copy($config_path . '/projects.php', $config_path . '/projects.local.php');
+    if ($res) echo " Ok\n"; else die(" Failed");
+}
+
 $config = require __DIR__ . '/src/bootstrap.php';
 
 $stdin = fopen("php://stdin", "r");

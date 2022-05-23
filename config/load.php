@@ -16,6 +16,11 @@ if (file_exists(__DIR__ . '/user.local.php')) {
     $config['users'] = $users;
 }
 
+if (file_exists(__DIR__ . '/projects.local.php')) {
+    $projects = require __DIR__ . '/projects.local.php';
+    $config['projects'] = $projects;
+}
+
 if(!empty($config['timezone'])){
     date_default_timezone_set($config['timezone']);
 }
