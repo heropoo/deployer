@@ -11,8 +11,8 @@ if (file_exists(__DIR__ . '/app.local.php')) {
     $config = array_merge($config, $config_local);
 }
 
-if (file_exists(__DIR__ . '/user.local.php')) {
-    $users = require __DIR__ . '/user.local.php';
+if (file_exists(__DIR__ . '/users.local.php')) {
+    $users = require __DIR__ . '/users.local.php';
     $config['users'] = $users;
 }
 

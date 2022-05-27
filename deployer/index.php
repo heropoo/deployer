@@ -12,7 +12,8 @@ $realm = md5($config['secret_key']);
 $users = $config['users'];
 
 $projects = $config['projects'];
-var_dump($projects);exit;
+
+//var_dump($projects);exit;
 
 //$hosts = $config['servers'];
 

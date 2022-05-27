@@ -1,6 +1,7 @@
 .idea/
 config/app.local.php
-config/user.local.php
+config/users.local.php
+config/projects.local.php
 composer.lock
 vendor/
 *.bk.php
