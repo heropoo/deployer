@@ -36,24 +36,6 @@ $tag = isset($_POST['tag']) ? trim($_POST['tag']) : ''; //master && sudo git pul
 $dst_host = isset($_POST['host']) ? trim($_POST['host']) : '';
 $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $action = isset($_POST['action']) ? trim($_POST['action']) : '';
-
-    error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][" . (empty($dst_host) ? 'all' : $dst_host) . "] User '$username' exec action `$action" . (empty($tag) ? '' : ' ' . $tag) . "`" . PHP_EOL, 3, $config['deployer_log_file']);
-    $dst_project_config = $projects[$dst_project] ?? [];
-    foreach ($dst_project_config['servers'] as $host => $host_config) {
-        $data = [
-            'token' => md5($config['secret_key'] . date('Y-m-d H')),
-            'action' => $action,
-            'tag' => $tag,
-            'project' => $dst_project
-        ];
-        $res = curl_post($host_config['url'], $data);
-        header('Content-type: application/json;charset=utf-8');
-        echo $res;exit;
-    }
-}
-
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -75,13 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 2rem 4rem;
         }
         .form-control{margin-right: 10px}
+        /*pre {*/
+        /*    overflow-x: auto;*/
+        /*    width: 600px;*/
+        /*    background-color: #efefef;*/
+        /*    padding: 5px 10px;*/
+        /*}*/
     </style>
 </head>
 <body>
 <div class="main container-fluid">
     <div class="row">
         <h2>服务器查询状态</h2>
-        <form action="" method="post" class="form form-inline" id="queryForm">
+        <form action="" method="post" class="form form-inline">
             <input type="hidden" name="action" value="status">
             <div class="form-group">
                 <label for="">项目:</label>
@@ -98,16 +86,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <div class="row">
-        <h2>快速代码发布</h2>
-        <span class="help-block">快速使用主分支代码发布</span>
-        <form action="" method="post" class="form form-inline" id="fastPublishForm">
-            <input type="hidden" name="tag" value="master && sudo git pull --recurse-submodules">
+        <h2>代码发布</h2>
+        <form action="" method="post" class="form form-inline" id="publishForm">
+            <div class="form-group">
+                <label for="">版本:</label>
+                <input class="form-control" type="text" name="tag" value="<?= $tag ?>" style="width: 32rem;" placeholder="请输入tag、commit_id 或者 分支" required>
+            </div>
             <div class="form-group">
                 <label for="">项目:</label>
-                <select name="project" class="form-control project">
-                    <?php foreach ($projects as $project_id => $project): ?>
-                        <option value="<?= $project_id ?>"
-                                <?php if ($dst_project === $project_id): ?>selected<?php endif; ?>><?= $project['name'] ?></option>
+                <select name="project" class="form-control">
+                    <?php foreach ($projects as $project => $project_name): ?>
+                        <option value="<?= $project ?>"
+                                <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">机器:</label>
+                <select name="host" class="form-control">
+                    <option value="">全部</option>
+                    <?php foreach ($hosts as $host => $url): ?>
+                        <option value="<?= $host ?>" <?php if ($dst_host === $host): ?>selected<?php endif; ?>><?= $host ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -123,19 +122,86 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <hr>
     </div>
 
-    <div class="row" id="result"></div>
+    <div class="row">
+        <h2>快速代码发布</h2>
+        <span class="help-block">快速使用主分支代码发布</span>
+        <form action="" method="post" class="form form-inline" id="fastPublishForm">
+            <input type="hidden" name="tag" value="master && sudo git pull --recurse-submodules">
+            <div class="form-group">
+                <label for="">项目:</label>
+                <select name="project" class="form-control">
+                    <?php foreach ($projects as $project => $project_name): ?>
+                        <option value="<?= $project ?>"
+                                <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">机器:</label>
+                <select name="host" class="form-control">
+                    <option value="">全部</option>
+                    <?php foreach ($hosts as $host => $url): ?>
+                        <option value="<?= $host ?>" <?php if ($dst_host === $host): ?>selected<?php endif; ?>><?= $host ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for=""></label>
+                <button type="submit" class="btn btn-primary">发布</button>
+            </div>
+
+            <input type="hidden" name="action" value="checkout">
+
+        </form>
+        <hr>
+    </div>
+
+    <div class="row">
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = isset($_POST['action']) ? trim($_POST['action']) : '';
+
+    error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][" . (empty($dst_host) ? 'all' : $dst_host) . "] User '$username' exec action `$action" . (empty($tag) ? '' : ' ' . $tag) . "`" . PHP_EOL, 3, $config['deployer_log_file']);
+
+    foreach ($hosts as $host => $url) {
+        if (!empty($dst_host)) {
+            if ($host !== $dst_host) {
+                continue;
+            }
+        }
+
+        $data = [
+            'token' => md5($config['secret_key'] . date('Y-m-d H')),
+            'action' => $action,
+            'tag' => $tag,
+            'project' => $dst_project
+        ];
+        $res = curl_post($url, $data);
+
+        $res = json_decode($res, 1);
+
+        echo $projects[$dst_project] . ' => ' . $host . ': ';
+        echo $res['data']['return_value'] === 0 ? '✔ Success' : '❌ Failed';
+        echo '<br /><br />';
+        if (strlen($res['data']['success_msg']) > 0) {
+            echo '<div>output: <pre>' . PHP_EOL . $res['data']['success_msg'] . '</pre></div>';
+        }
+        if (strlen($res['data']['error_msg']) > 0) {
+            echo '<div>error message: <pre>' . PHP_EOL . $res['data']['error_msg'] . '</pre></div>';
+        }
+        echo '<p>--------------------' . date('Y-m-d H:i:s') . '--------------------</p>';
+    }
+}
+?>
+    </div>
 </div>
 <p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; 2018 - <?= date('Y')?> <a href="https://github.com/heropoo/deployer">Deployer</a></p>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-    $("#queryForm").submit(function(){
-        var data = $(this).serialize();
-        $.post("", data, function(res){
 
-        }, 'json');
-        return false;
-    });
 </script>
 </body>
 </html>

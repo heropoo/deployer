@@ -45,7 +45,7 @@ $password = trim(fgets($stdin));
 
 $pwd = password_hash($config['secret_key'] . $password, PASSWORD_DEFAULT);
 
-$users_config_file = __DIR__ . '/config/user.local.php';
+$users_config_file = __DIR__ . '/config/users.local.php';
 if (file_exists($users_config_file)) {
     $users = require $users_config_file;
 }

@@ -3,7 +3,7 @@
 return [
     'project1' => [
         'name' => '示例项目1',
-        'dist_servers' => [ //目标机器列表
+        'servers' => [ //目标机器列表
             'prod-1-1' => [
                 'name' => '示例服务器1-1',
                 'user' => 'www-data',//目标机器用户
@@ -20,7 +20,7 @@ return [
     ],
     'project2' => [
         'name' => '示例项目2',
-        'dist_servers' => [ //目标机器列表
+        'servers' => [ //目标机器列表
             'prod-2-1' => [
                 'name' => '示例服务器2-1',
                 'user' => 'www-data',
