@@ -27,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return_json(1, 'empty project');
     }
 
+    if(!is_dir($config['project_paths'][$project])){
+        return_json(1, 'project is not exists');
+    }
+
     if ($action == 'status') {    // git status
         $res = git_status($project);
         return_json(0, 'git status', $res);
