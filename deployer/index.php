@@ -92,7 +92,8 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
             </div>
             <div class="form-group">
                 <label for="">项目:</label>
-                <select name="project" class="form-control">
+                <select name="project" class="form-control" required>
+                    <option value="">请选择</option>
                     <?php foreach ($projects as $project => $project_name): ?>
                         <option value="<?= $project ?>"
                                 <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
@@ -127,7 +128,8 @@ $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
             <input type="hidden" name="tag" value="master && sudo git pull --recurse-submodules">
             <div class="form-group">
                 <label for="">项目:</label>
-                <select name="project" class="form-control">
+                <select name="project" class="form-control" required>
+                    <option value="">请选择</option>
                     <?php foreach ($projects as $project => $project_name): ?>
                         <option value="<?= $project ?>"
                                 <?php if ($dst_project === $project): ?>selected<?php endif; ?>><?= $project_name ?></option>
