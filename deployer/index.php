@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
         $res = sub_curl($url, $data);
 
-        error_log(" res:". $res . PHP_EOL, 3, $config['deployer_log_file']);
+        error_log("{$projects[$dst_project]}' => '$host': ' res:". $res . PHP_EOL, 3, $config['deployer_log_file']);
 
         $res = json_decode($res, 1);
 
