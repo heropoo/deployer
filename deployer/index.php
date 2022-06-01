@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $res = json_decode($res, 1);
 
         echo $projects[$dst_project] . ' => ' . $host . ': ';
-        echo $res['data']['return_value'] === 0 ? '✔ Success' : '❌ Failed '.$res['msg'];
+        echo $res['data']['return_value'] === 0 ? '✔ Success' : "❌ Failed '{$res['msg']}'";
         echo '<br /><br />';
         if (strlen($res['data']['success_msg']) > 0) {
             echo '<div>output: <pre>' . PHP_EOL . $res['data']['success_msg'] . '</pre></div>';
