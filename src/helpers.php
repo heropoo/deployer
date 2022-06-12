@@ -21,3 +21,14 @@ if(!function_exists('generate_random_str')){
         return $random_str;
     }
 }
+
+
+if (!function_exists('is_cli')) {
+    /**
+     * check if php running in cli mode
+     */
+    function is_cli()
+    {
+        return preg_match("/cli/i", php_sapi_name()) ? true : false;
+    }
+}

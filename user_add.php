@@ -22,6 +22,18 @@ if (!file_exists($config_path . '/app.local.php')) {
     if ($res) echo " Ok\n"; else die(" Failed");
 }
 
+if (!file_exists($config_path . '/projects.local.php')) {
+    echo "Create local projects config './projects.local.php' ";
+    $res = copy($config_path . '/projects.php', $config_path . '/projects.local.php');
+    if ($res) echo " Ok\n"; else die(" Failed");
+}
+
+if (!file_exists($config_path . '/hosts.local.php')) {
+    echo "Create local hosts config './hosts.local.php' ";
+    $res = copy($config_path . '/hosts.php', $config_path . '/hosts.local.php');
+    if ($res) echo " Ok\n"; else die(" Failed");
+}
+
 $config = require __DIR__ . '/src/bootstrap.php';
 
 $stdin = fopen("php://stdin", "r");
@@ -39,7 +51,7 @@ $password = trim(fgets($stdin));
 
 $pwd = password_hash($config['secret_key'] . $password, PASSWORD_DEFAULT);
 
-$users_config_file = __DIR__ . '/config/user.local.php';
+$users_config_file = __DIR__ . '/config/users.local.php';
 if (file_exists($users_config_file)) {
     $users = require $users_config_file;
 }
