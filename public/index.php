@@ -130,9 +130,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; 2018 - <?= date('Y')?> <a href="https://github.com/heropoo/deployer">Deployer</a></p>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.6.13/layui.min.js"></script>-->
 <script>
+    // var layer;
+    // layui.use(['layer'], function(){
+    //     layer = layui.layer
+    // });
+
     $("#queryForm").submit(function(){
         var data = $(this).serialize();
+        $("#result").html("Loading");
         $.post("", data, function(res){
             show_result(res)
         }, 'json');
@@ -140,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     });
     $("#fastPublishForm").submit(function(){
         var data = $(this).serialize();
+        $("#result").html("Loading");
         $.post("", data, function(res){
             show_result(res)
         }, 'json');
