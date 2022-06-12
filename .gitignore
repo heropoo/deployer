@@ -1,5 +1,4 @@
 .idea/
 *.local.php
-composer.lock
 vendor/
 *.bk.php
