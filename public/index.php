@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function show_result(res){
         let tpl = '';
         for (var i=0; i < res.length; i++){
-            console.log(i);
+            //console.log(i);
             tpl += '<div>';
             var item = res[i];
             if (item.code === 0) {
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 + "<div>error: <pre>" + item.stderr + "</pre>"
             tpl += '</div>';
         }
-        console.log(tpl);
+        //console.log(tpl);
 
         $("#result").html(tpl);
     }
