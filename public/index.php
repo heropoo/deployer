@@ -163,6 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 + "<div>error: <pre>" + item.stderr + "</pre>"
             tpl += '</div>';
         }
+        console.log(tpl);
 
         $("#result").html(tpl);
     }
