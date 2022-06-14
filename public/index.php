@@ -155,9 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             tpl += '<div>';
             var item = res[i];
             if (item.code === 0) {
-                tpl = "<div class=\"result-message\">"+item.msg+"  ✔️ Success </div>";
+                tpl += "<div class=\"result-message\">"+item.msg+"  ✔️ Success </div>";
             }else{
-                tpl = "<div class=\"result-message\">"+item.msg+"  ❌ Failed </div>";
+                tpl += "<div class=\"result-message\">"+item.msg+"  ❌ Failed </div>";
             }
             tpl += "<div>output: <pre>" + item.stdout + "</pre>"
                 + "<div>error: <pre>" + item.stderr + "</pre>"
