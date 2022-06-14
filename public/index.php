@@ -149,8 +149,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     })
 
     function show_result(res){
-        let tpl;
+        let tpl = '';
         for (var i=0; i < res.length; i++){
+            console.log(i);
             tpl += '<div>';
             var item = res[i];
             if (item.code === 0) {
