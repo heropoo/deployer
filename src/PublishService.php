@@ -37,7 +37,7 @@ class PublishService
             $cmd = "cd {$project_config['path']} && git fetch && git checkout {$project_config['branch']} && git pull --recurse-submodules";
             $msg_prefix = "git checkout files of project '{$project_config['name']}' on host ";
         } else if ($action == 'status') {
-            $cmd = "cd {$project_config['path']} && git status";
+            $cmd = "cd {$project_config['path']} && git status && git show --stat";
             $msg_prefix = "git status of project '{$project_config['name']}' on host ";
         } else {
             //throw new \Exception("Unknown action '{$action}'");
