@@ -9,8 +9,7 @@ return [
     'title' => 'Deployer',    //部署系统标题
     'timezone' => 'Asia/Shanghai',
 
-    'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer-deployer-' . date('Y-m-d') . '.log',    //日志路径
-    'server_log_file' => dirname(__DIR__) . '/runtime/logs/deployer-server-' . date('Y-m-d') . '.log',    //日志路径
+    'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer.log',    //日志路径
 
     'secret_key' => '',       //加密密钥
 
