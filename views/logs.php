@@ -3,6 +3,7 @@ $lines = [];
 $log_file = $config['deployer_log_file'];
 if(file_exists($log_file)){
     $lines = file($log_file);
+    $lines = array_reverse($lines);
 }
 ?><!doctype html>
 <html lang="en">
@@ -33,6 +34,9 @@ if(file_exists($log_file)){
         .project{
             min-width: 20rem
         }
+        .logs-list{
+            padding: 1rem 0;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +50,7 @@ if(file_exists($log_file)){
 </div>
 <div class="main container-fluid">
     <div class="row">
-        <ul>
+        <ul class="logs-list">
     <?php foreach ($lines as $line):?>
         <li><?= $line?></li>
     <?php endforeach;?>
