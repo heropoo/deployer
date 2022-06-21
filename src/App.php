@@ -9,5 +9,5 @@ namespace Deployer;
 
 class App
 {
-    const VERSION = '1.5.x-dev';
+    const VERSION = '1.5.0';
 }
