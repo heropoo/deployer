@@ -38,9 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $service = new \Deployer\PublishService($config);
     $res = $service->publish($dst_project, $action);
 
-    header('Content-type: application/json;charset=utf-8');
-    echo json_encode($res);
-    exit;
+    $cmd = $service->getExecutedCommand();
+
+    if($action == 'fast_publish'){
+        error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][$username] User '$username'"
+            ." executed command: `$cmd`, result: ".json_encode($res, JSON_UNESCAPED_UNICODE)
+            . PHP_EOL
+            , 3, $config['deployer_log_file']
+        );
+    }
+
+    echo return_json($res);exit;
 }
 
 ?><!doctype html>

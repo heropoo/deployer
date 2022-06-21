@@ -13,6 +13,7 @@ use phpseclib3\Net\SSH2;
 class PublishService
 {
     protected $config;
+    protected $cmd;
 
     public function __construct($config)
     {
@@ -50,6 +51,7 @@ class PublishService
                 ]
             ];
         }
+        $this->cmd = $cmd;
         $data = [];
         foreach ($project_config['hosts'] as $host_id) {
             $host_config = $this->config['hosts'][$host_id];
@@ -77,5 +79,9 @@ class PublishService
             ];
         }
         return $data;
+    }
+
+    public function getExecutedCommand(){
+        return $this->cmd;
     }
 }
