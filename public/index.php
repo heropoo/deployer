@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if($action == 'fast_publish'){
         error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][$username] User '$username'"
+            ." publish project '{$projects[$dst_project]['name']}',"
             ." executed command: `$cmd`, result: ".json_encode($res, JSON_UNESCAPED_UNICODE)
             . PHP_EOL
             , 3, $config['deployer_log_file']
