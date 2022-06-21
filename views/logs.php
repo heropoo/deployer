@@ -34,7 +34,7 @@ if(file_exists($log_file)){
         .project{
             min-width: 20rem
         }
-        .logs-list{
+        .logs-list li{
             padding: 1rem 0;
         }
     </style>
