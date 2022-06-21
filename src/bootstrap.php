@@ -4,6 +4,6 @@
  * Datetime: 2022/5/23 1:11 上午
  */
 
-require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-return require dirname(__DIR__) . '/config/load.php';
+return require __DIR__ . '/../config/load.php';

@@ -5,8 +5,6 @@
  * Time: 16:34
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 $config = require dirname(__DIR__) . '/src/bootstrap.php';
 
 $realm = md5($config['secret_key']);
@@ -14,10 +12,6 @@ $realm = md5($config['secret_key']);
 $users = $config['users'];
 
 $projects = $config['projects'];
-
-//var_dump($projects);exit;
-
-//$hosts = $config['servers'];
 
 $username = isset($_SERVER['PHP_AUTH_USER']) ? trim($_SERVER['PHP_AUTH_USER']) : '';
 
@@ -34,9 +28,6 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     }
 }
 
-//$tag = isset($_POST['tag']) ? trim($_POST['tag']) : ''; //master && sudo git pull --recurse-submodules
-//$dst_host = isset($_POST['host']) ? trim($_POST['host']) : '';
-//$dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -74,6 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         .form-control{margin-right: 10px}
         .result-message{font-size: 2rem}
+        .project{
+            min-width: 20rem
+        }
     </style>
 </head>
 <body>
@@ -84,13 +78,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="hidden" name="action" value="status">
             <div class="form-group">
                 <label for="">项目:</label>
-                <select name="project" class="form-control" style="width: 20rem" required>
+                <select name="project" class="form-control project" required>
                     <option value="">请选择</option>
                     <?php foreach ($projects as $project_id => $project): ?>
                         <option value="<?= $project_id ?>"
                                 <?php if ($dst_project === $project_id): ?>selected<?php endif; ?>><?= $project['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for=""></label>
                 <button type="submit" class="btn btn-info">查询</button>
             </div>
         </form>
