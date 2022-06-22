@@ -12,12 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cmd = $service->getExecutedCommand();
 
     if($action == 'fast_publish'){
-        error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][$username] User '$username'"
-            ." publish project '{$projects[$dst_project]['name']}',"
-            ." executed command: `$cmd`, result: ".json_encode($res, JSON_UNESCAPED_UNICODE)
-            . PHP_EOL
-            , 3, $config['deployer_log_file']
-        );
+        $log_data = [
+            'time' => date('Y-m-d H:i:s'),
+            'project_id' => $dst_project,
+            'project' => $projects[$dst_project]['name'],
+            'user' => $username,
+            'cmd' => $cmd,
+            'data' => $res
+        ];
+        error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE).PHP_EOL,
+            3,  $config['deployer_log_file']);
     }
 
     echo return_json($res);exit;
