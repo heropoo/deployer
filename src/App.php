@@ -13,4 +13,9 @@ class App
 
     /** @var \Moon\Application $instance */
     public static $instance;
+
+    public static function get($name)
+    {
+        return static::$container->get($name);
+    }
 }
