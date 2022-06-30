@@ -1,4 +1,14 @@
 {
+    "name": "heropoo/deployer",
+    "description": "A deployment tool using git and ssh",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "heropoo",
+            "email": "aiyouyou1000@163.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Deployer\\": "src/"
@@ -13,13 +23,13 @@
         }
     },
     "require": {
-        "php": ">=5.6.1",
+        "php": ">=5.6",
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "phpseclib/phpseclib": "^3.0",
-        "heropoo/db": "dev-sqlite3"
-    },
-    "require-dev": {
+        "heropoo/db": "dev-sqlite3",
+        "heropoo/routing": "^0.8.5",
+        "heropoo/container": "^0.4.1"
     }
 }
