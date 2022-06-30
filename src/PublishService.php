@@ -35,21 +35,12 @@ class PublishService
         $private_key = $this->config['private_key'];
         $project_config = $this->config['projects'][$project];
         if ($action == 'fast_publish') {
-            $cmd = "cd {$project_config['path']} && git fetch && git checkout {$project_config['branch']} && git pull --recurse-submodules";
-//            $cmds = [
-//                "cd {$project_config['path']}",
-//                "git fetch && git checkout {$project_config['branch']}",
-//                "git checkout {$project_config['branch']}",
-//                "git pull --recurse-submodules"
-//            ];
+            $cmd = "cd {$project_config['path']} && git reset --hard FETCH_HEAD"
+                ." && git fetch && git checkout {$project_config['branch']}"
+                ." && git pull --recurse-submodules";
             $msg_prefix = "git checkout files of project '{$project_config['name']}' on host ";
         } else if ($action == 'status') {
             $cmd = "cd {$project_config['path']} && git show --stat && git status";
-//            $cmds = [
-//                "cd {$project_config['path']}",
-//                "git show --stat",
-//                "git status",
-//            ];
             $msg_prefix = "git status of project '{$project_config['name']}' on host ";
         } else {
             //throw new \Exception("Unknown action '{$action}'");
