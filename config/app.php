@@ -20,4 +20,6 @@ return [
     'hosts' => [],  //目标机器列表
 
     'users' => [], //管理员账号,
+
+    'debug' => true
 ];
