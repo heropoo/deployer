@@ -74,14 +74,15 @@ class PublishService
             $data[] = [
                 "msg" => $msg,
                 "code" => $exist_status,
-                "stdout" => $stdout,
+                "stdout" => "> " . $cmd . PHP_EOL . $stdout,
                 "stderr" => $stderr,
             ];
         }
         return $data;
     }
 
-    public function getExecutedCommand(){
+    public function getExecutedCommand()
+    {
         return $this->cmd;
     }
 }
