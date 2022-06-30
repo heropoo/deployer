@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8df48e43e14cc9f8ae822564797d068",
+    "content-hash": "64163664edcf2a1dd89f770417d90122",
     "packages": [
         {
             "name": "heropoo/config",
@@ -209,16 +209,16 @@
         },
         {
             "name": "heropoo/routing",
-            "version": "v0.8.5",
+            "version": "v0.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heropoo/routing.git",
-                "reference": "e58e982dadf980576df659ee617f49e07fa53ab8"
+                "reference": "e1fed258c9d7d100809815f55933d3a1a9eba145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heropoo/routing/zipball/e58e982dadf980576df659ee617f49e07fa53ab8",
-                "reference": "e58e982dadf980576df659ee617f49e07fa53ab8",
+                "url": "https://api.github.com/repos/heropoo/routing/zipball/e1fed258c9d7d100809815f55933d3a1a9eba145",
+                "reference": "e1fed258c9d7d100809815f55933d3a1a9eba145",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -257,22 +257,22 @@
             ],
             "support": {
                 "issues": "https://github.com/heropoo/routing/issues",
-                "source": "https://github.com/heropoo/routing/tree/v0.8.5"
+                "source": "https://github.com/heropoo/routing/tree/v0.8.6"
             },
-            "time": "2021-04-04T04:31:43+00:00"
+            "time": "2022-06-30T17:42:07+00:00"
         },
         {
             "name": "heropoo/session",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heropoo/session.git",
-                "reference": "4a857ada040696c596850681272319ff9737097a"
+                "reference": "1293d85a1e22e70e5e54d15b5fa9f7a2051dda3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heropoo/session/zipball/4a857ada040696c596850681272319ff9737097a",
-                "reference": "4a857ada040696c596850681272319ff9737097a",
+                "url": "https://api.github.com/repos/heropoo/session/zipball/1293d85a1e22e70e5e54d15b5fa9f7a2051dda3f",
+                "reference": "1293d85a1e22e70e5e54d15b5fa9f7a2051dda3f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -302,9 +302,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heropoo/session/issues",
-                "source": "https://github.com/heropoo/session/tree/master"
+                "source": "https://github.com/heropoo/session/tree/v0.1.1"
             },
-            "time": "2020-01-29T06:26:16+00:00"
+            "time": "2022-06-30T18:21:48+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -30,11 +30,11 @@
         "ext-json": "*",
         "phpseclib/phpseclib": "^3.0",
         "heropoo/db": "dev-sqlite3",
-        "heropoo/routing": "^0.8.5",
+        "heropoo/routing": "^0.8.6",
         "heropoo/container": "^0.4.1",
         "monolog/monolog": "^1",
         "heropoo/request": "^0.2.0",
-        "heropoo/session": "^0.1.0",
+        "heropoo/session": "^0.1.1",
         "heropoo/config": "^0.2.1",
         "symfony/http-foundation": "^4.3"
     }
