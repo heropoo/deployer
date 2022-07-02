@@ -7,9 +7,13 @@
 namespace App\Controllers;
 
 
+use Moon\Request\Request;
+
 class IndexController
 {
-    public function index(){
+    public function index(Request $request){
+        $session = $request->getSession();
+        $session->destroy();
         return 'index';
     }
 }
