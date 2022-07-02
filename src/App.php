@@ -6,7 +6,7 @@
 
 class App
 {
-    const VERSION = '1.5.0';
+    const VERSION = '1.6.0';
 
     /** @var \Moon\Container\Container $container */
     public static $container;

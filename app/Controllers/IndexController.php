@@ -12,8 +12,8 @@ use Moon\Request\Request;
 class IndexController
 {
     public function index(Request $request){
-        $session = $request->getSession();
-        $session->destroy();
-        return 'index';
+        //$session = $request->getSession();
+        //$session->destroy();
+        return view('index', [], 'layouts/app');
     }
 }
