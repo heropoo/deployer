@@ -6,7 +6,7 @@
  * Time: 12:21
  */
 
-$config = require __DIR__ . '/src/bootstrap.php';
+$config = require __DIR__ . '/config/load.php';
 
 $config_path = __DIR__ . '/config';
 
@@ -34,7 +34,7 @@ if (!file_exists($config_path . '/hosts.local.php')) {
     if ($res) echo " Ok\n"; else die(" Failed");
 }
 
-$config = require __DIR__ . '/src/bootstrap.php';
+$config = require __DIR__ . '/config/load.php';
 
 $stdin = fopen("php://stdin", "r");
 $s = "Input username: ";

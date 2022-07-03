@@ -21,10 +21,7 @@ class BasicAuth
         if (!isset($server['PHP_AUTH_USER'])) {
             return new Response(
                 '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
-                401,
-                [
-                    'WWW-Authenticate' => 'Basic realm="' . $realm . '"',
-                ]
+                401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
             );
         } else {
             $username = isset($server['PHP_AUTH_USER']) ? trim($server['PHP_AUTH_USER']) : '';
@@ -32,10 +29,7 @@ class BasicAuth
             if (!key_exists($username, $users) || !password_verify($pwd, $users[$username])) {
                 return new Response(
                     '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
-                    401,
-                    [
-                        'WWW-Authenticate' => 'Basic realm="' . $realm . '"',
-                    ]
+                    401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
                 );
             }
         }
