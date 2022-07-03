@@ -4,7 +4,7 @@
  * Datetime: 2022/6/12 10:39 下午
  */
 
-namespace Deployer;
+namespace App\Services;
 
 
 use phpseclib3\Crypt\PublicKeyLoader;

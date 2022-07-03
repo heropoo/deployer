@@ -17,6 +17,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title><?= $this->title ?></title>
     <style>
         .nav-bar{
@@ -46,45 +48,5 @@
     <?= $content?>
 </div>
 <p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; <?= date('Y')?> <a href="https://github.com/heropoo/deployer">Deployer</a> v<?= App::VERSION?></p>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-    $("#queryForm").submit(function(){
-        var data = $(this).serialize();
-        $("#result").html("Loading");
-        $.post("", data, function(res){
-            show_result(res)
-        }, 'json');
-        return false;
-    });
-    $("#fastPublishForm").submit(function(){
-        var data = $(this).serialize();
-        $("#result").html("Loading");
-        $.post("", data, function(res){
-            show_result(res)
-        }, 'json');
-        return false;
-    })
-
-    function show_result(res){
-        let tpl = '';
-        for (var i=0; i < res.length; i++){
-            //console.log(i);
-            tpl += '<div>';
-            var item = res[i];
-            if (item.code === 0) {
-                tpl += "<div class=\"result-message\">"+item.msg+"  ✔️ Success </div>";
-            }else{
-                tpl += "<div class=\"result-message\">"+item.msg+"  ❌ Failed </div>";
-            }
-            tpl += "<div>output: <pre>" + item.stdout + "</pre>"
-                + "<div>error: <pre>" + item.stderr + "</pre>"
-            tpl += '</div>';
-        }
-        //console.log(tpl);
-
-        $("#result").html(tpl);
-    }
-</script>
 </body>
 </html>

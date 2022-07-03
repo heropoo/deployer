@@ -9,12 +9,8 @@ use Moon\Request\Request;
 
 /** @var Router $router */
 
-$router->group(['middleware'=>\App\Middleware\BasicAuth::class], function() use ($router){
+$router->group(['middleware' => \App\Middleware\BasicAuth::class], function () use ($router) {
     $router->get('/', 'IndexController::index');
+    $router->post('/publish', 'IndexController::publish');
+    $router->get('/logs', 'IndexController::logs');
 });
-//$router->controller('/test', 'TestController');
-//$router->resource('/user/', 'UserController');
-//
-//$router->get('/hello/{username}', function (Request $request, $username) {
-//    return $request->getMethod().'. Hello '. $username;
-//});

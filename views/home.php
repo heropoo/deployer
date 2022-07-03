@@ -1,31 +1,31 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $action = isset($_POST['action']) ? trim($_POST['action']) : '';
-    $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
-
-//    error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][" . (empty($dst_host) ? 'all' : $dst_host) . "] User '$username' exec action `$action" . (empty($tag) ? '' : ' ' . $tag) . "`" . PHP_EOL, 3, $config['deployer_log_file']);
-
-    $service = new \Deployer\PublishService($config);
-    $res = $service->publish($dst_project, $action);
-
-    $cmd = $service->getExecutedCommand();
-
-    if($action == 'fast_publish'){
-        $log_data = [
-            'time' => date('Y-m-d H:i:s'),
-            'project_id' => $dst_project,
-            'project' => $projects[$dst_project]['name'],
-            'user' => $username,
-            'cmd' => $cmd,
-            'data' => $res
-        ];
-        error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE).PHP_EOL,
-            3,  $config['deployer_log_file']);
-    }
-
-    echo return_json($res);exit;
-}
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//    $action = isset($_POST['action']) ? trim($_POST['action']) : '';
+//    $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
+//
+////    error_log("[" . date('Y-m-d H:i:s') . "][$dst_project][" . (empty($dst_host) ? 'all' : $dst_host) . "] User '$username' exec action `$action" . (empty($tag) ? '' : ' ' . $tag) . "`" . PHP_EOL, 3, $config['deployer_log_file']);
+//
+//    $service = new \Deployer\PublishService($config);
+//    $res = $service->publish($dst_project, $action);
+//
+//    $cmd = $service->getExecutedCommand();
+//
+//    if($action == 'fast_publish'){
+//        $log_data = [
+//            'time' => date('Y-m-d H:i:s'),
+//            'project_id' => $dst_project,
+//            'project' => $projects[$dst_project]['name'],
+//            'user' => $username,
+//            'cmd' => $cmd,
+//            'data' => $res
+//        ];
+//        error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE).PHP_EOL,
+//            3,  $config['deployer_log_file']);
+//    }
+//
+//    echo return_json($res);exit;
+//}
 
 ?><!doctype html>
 <html lang="en">
