@@ -51,4 +51,18 @@ class IndexController
         return $res;
         //echo return_json($res);exit;
     }
+
+    public function logs(Request $request){
+        $lines = [];
+        $config = config('load');
+        $log_file = $config['deployer_log_file'];
+        if(file_exists($log_file)){
+            $lines = file($log_file);
+            $lines = array_reverse($lines);
+        }
+
+        return view('logs', [
+            'lines'=> $lines,
+        ], 'layouts/app');
+    }
 }
