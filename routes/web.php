@@ -9,7 +9,9 @@ use Moon\Request\Request;
 
 /** @var Router $router */
 
-$router->get('/', 'IndexController::index');
+$router->group(['middleware'=>\App\Middleware\BasicAuth::class], function() use ($router){
+    $router->get('/', 'IndexController::index');
+});
 //$router->controller('/test', 'TestController');
 //$router->resource('/user/', 'UserController');
 //

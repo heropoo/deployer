@@ -10,15 +10,15 @@ $config = require __DIR__ . '/src/bootstrap.php';
 
 $config_path = __DIR__ . '/config';
 
-if (!file_exists($config_path . '/app.local.php')) {
-    echo "Create local config './app.local.php' ";
-    $local_config_content = file_get_contents($config_path . '/app.php');
+if (!file_exists($config_path . '/deployer.local.php')) {
+    echo "Create local config './deployer.local.php' ";
+    $local_config_content = file_get_contents($config_path . '/deployer.php');
     $new_secret_key = generate_random_str(32);
     $local_config_content = str_replace(
         "'secret_key' => ''", "'secret_key' => '{$new_secret_key}'",
         $local_config_content
     );
-    $res = file_put_contents($config_path . '/app.local.php', $local_config_content);
+    $res = file_put_contents($config_path . '/deployer.local.php', $local_config_content);
     if ($res) echo " Ok\n"; else die(" Failed");
 }
 

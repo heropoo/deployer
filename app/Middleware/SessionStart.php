@@ -34,7 +34,8 @@ class SessionStart
         if (isset($request->cookie[$sessionName])) {
             $sessionId = $request->cookie[$sessionName];
         } else {
-            $sessionId = session_create_id();
+            $sessionId = function_exists('session_create_id')
+                ? call_user_func('session_create_id') : generate_random_str(32);
         }
 
         $cookieParams = session_get_cookie_params();

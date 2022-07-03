@@ -15,6 +15,7 @@ use Moon\Routing\Route;
 use Moon\Routing\Router;
 use Moon\Config\Config;
 use Moon\Routing\UrlMatchException;
+use Moon\Session\Session;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -274,6 +275,9 @@ class Application
      */
     protected function makeResponse($data, $status = 200)
     {
+        if($data instanceof Response){
+            return $data;
+        }
         /** @var Response $response */
         if($this->container->exists('response')){
             $response = $this->container->get('response');
@@ -283,10 +287,7 @@ class Application
         if ($status == 200) {
             $status = $response->getStatusCode();
         }
-        if ($data instanceof Response) {
-            $response->setContent($data->getContent());
-            $response->setStatusCode($data->getStatusCode());
-        } else if ($data instanceof View) {
+        if ($data instanceof View) {
             $response->setContent(strval($data));
             $response->setStatusCode($status);
         } else if (is_array($data) || is_object($data)) {

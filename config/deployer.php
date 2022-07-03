@@ -6,17 +6,24 @@
  */
 
 return [
-    'title' => 'Deployer',      //部署系统标题
+    //部署系统标题
+    'title' => 'Deployer',
 
-    'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer.log',    //日志路径
+    //日志路径
+    'deployer_log_file' => dirname(__DIR__) . '/runtime/logs/deployer.log',
 
-    'secret_key' => '',         //加密密钥
+    //加密密钥
+    'secret_key' => '',
 
-    'private_key' => '',        //私钥
+    //私钥
+    'private_key' => '',
 
-    'projects' => [],           //发布项目列表
+    //发布项目列表
+    'projects' => [],
 
-    'hosts' => [],              //目标机器列表
+    //目标机器列表
+    'hosts' => [],
 
-    'users' => [],              //管理员账号,
+    //管理员账号
+    'users' => [],
 ];

@@ -1,5 +1,5 @@
 .idea/
-*.local.php
+config/*.local.php
 vendor/
 .env
 *.bk.php
