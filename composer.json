@@ -27,9 +27,6 @@
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
-        "phpseclib/phpseclib": "^3.0",
-        "heropoo/db": "dev-sqlite3",
-        "heropoo/routing": "^0.8.5",
-        "heropoo/container": "^0.4.1"
+        "phpseclib/phpseclib": "^3.0"
     }
 }
