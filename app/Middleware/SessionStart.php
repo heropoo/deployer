@@ -6,7 +6,6 @@
 
 namespace App\Middleware;
 
-use Moon\Config\Config;
 use Moon\Request\Request;
 use Closure;
 use Moon\Session\Session;
@@ -20,10 +19,7 @@ class SessionStart
      */
     public function handle(Request $request, Closure $next)
     {
-        /** @var Config $config */
-        $config = \App::$container->get('config');
-        $config = $config->get('session');
-        //$config = config('session');
+        $config = config('session');
 
         if (isset($config['name'])) {
             $sessionName = $config['name'];
