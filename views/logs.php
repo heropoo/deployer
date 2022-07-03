@@ -9,7 +9,7 @@
 </style>
 <div class="container-fluid">
     <div class="row">
-        <ul class="logs-list">
+        <div class="logs-list">
     <?php foreach ($lines as $line):?>
     <?php $line = json_decode($line, 1);?>
         <div class="log-item bg-success">
@@ -29,6 +29,6 @@
 
         </div>
     <?php endforeach;?>
-        </ul>
+        </div>
     </div>
 </div>
