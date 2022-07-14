@@ -36,11 +36,11 @@ class PublishService
         $project_config = $this->config['projects'][$project];
         if ($action == 'fast_publish') {
             $cmd = "cd {$project_config['path']}"
-                ." && git log --pretty=%H -1 > .before-commit-id"
+                ." && echo 'before-commit-id: ' &&  git log --pretty=%H"
                 ." && git reset --hard FETCH_HEAD"
                 ." && git fetch && git checkout {$project_config['branch']}"
                 ." && git pull --recurse-submodules"
-                ." && git log --pretty=%H -1 > .after-commit-id";
+                ." && echo 'before-commit-id: ' && git log --pretty=%H -1 > .after-commit-id";
             $msg_prefix = "git checkout files of project '{$project_config['name']}' on host ";
         } else if ($action == 'status') {
             $cmd = "cd {$project_config['path']} && git show --stat && git status";
