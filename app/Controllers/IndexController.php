@@ -12,16 +12,18 @@ use Moon\Request\Request;
 
 class IndexController
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         //$session = $request->getSession();
         //$session->destroy();
         $projects = config('load.projects');
         return view('index', [
-            'projects'=> $projects
+            'projects' => $projects
         ], 'layouts/app');
     }
 
-    public function publish(Request $request){
+    public function publish(Request $request)
+    {
         $server = $request->server;
         $username = isset($server['PHP_AUTH_USER']) ? trim($server['PHP_AUTH_USER']) : '';
         $config = config('load');
@@ -35,7 +37,7 @@ class IndexController
 
         $cmd = $service->getExecutedCommand();
 
-        if($action == 'fast_publish'){
+        if ($action == 'fast_publish') {
             $log_data = [
                 'time' => date('Y-m-d H:i:s'),
                 'project_id' => $dst_project,
@@ -44,25 +46,26 @@ class IndexController
                 'cmd' => $cmd,
                 'data' => $res
             ];
-            error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE).PHP_EOL,
-                3,  $config['deployer_log_file']);
+            error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE) . PHP_EOL,
+                3, $config['deployer_log_file']);
         }
 
         return $res;
         //echo return_json($res);exit;
     }
 
-    public function logs(Request $request){
+    public function logs(Request $request)
+    {
         $lines = [];
         $config = config('load');
         $log_file = $config['deployer_log_file'];
-        if(file_exists($log_file)){
+        if (file_exists($log_file)) {
             $lines = file($log_file);
             $lines = array_reverse($lines);
         }
 
         return view('logs', [
-            'lines'=> $lines,
+            'lines' => $lines,
         ], 'layouts/app');
     }
 }
