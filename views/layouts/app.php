@@ -50,6 +50,6 @@ $path_info = App::get('request')->getPathInfo();
 <div class="main">
     <?= $content?>
 </div>
-<p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; <?= date('Y')?> <a href="https://github.com/heropoo/deployer">Deployer</a> v<?= App::VERSION?></p>
+<p style="text-align:center;position:fixed;bottom:1rem;left:1rem;">&copy; <?= date('Y')?> <a href="https://github.com/heropoo/deployer">Deployer</a> <?= App::version()?></p>
 </body>
 </html>

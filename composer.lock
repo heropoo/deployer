@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64163664edcf2a1dd89f770417d90122",
+    "content-hash": "5344eb9becb02217c7c634021da7956e",
     "packages": [
         {
             "name": "heropoo/config",
@@ -54,6 +54,49 @@
                 "source": "https://github.com/heropoo/config/tree/v0.2.1"
             },
             "time": "2019-03-15T10:06:45+00:00"
+        },
+        {
+            "name": "heropoo/console",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heropoo/console.git",
+                "reference": "fb3f4516693c3dd27094da65986275fdf5a56395"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heropoo/console/zipball/fb3f4516693c3dd27094da65986275fdf5a56395",
+                "reference": "fb3f4516693c3dd27094da65986275fdf5a56395",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Moon\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "heropoo",
+                    "email": "aiyouyou1000@163.com"
+                }
+            ],
+            "description": "A cli component",
+            "support": {
+                "issues": "https://github.com/heropoo/console/issues",
+                "source": "https://github.com/heropoo/console/tree/master"
+            },
+            "time": "2020-04-23T10:47:07+00:00"
         },
         {
             "name": "heropoo/container",
@@ -161,6 +204,70 @@
                 "source": "https://github.com/heropoo/db/tree/sqlite3"
             },
             "time": "2022-06-22T17:00:18+00:00"
+        },
+        {
+            "name": "heropoo/moon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heropoo/moon.git",
+                "reference": "737af439573b95ac6f6466d192dd0c0040058909"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heropoo/moon/zipball/737af439573b95ac6f6466d192dd0c0040058909",
+                "reference": "737af439573b95ac6f6466d192dd0c0040058909",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*",
+                "heropoo/config": "*",
+                "heropoo/console": "*",
+                "heropoo/container": "*",
+                "heropoo/request": "*",
+                "heropoo/routing": "*",
+                "heropoo/session": "*",
+                "monolog/monolog": "^1.0",
+                "php": ">=5.4",
+                "symfony/http-foundation": "^4.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "": "src/",
+                    "Moon\\": "src/Moon"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Heropoo",
+                    "email": "aiyouyou1000@163.com"
+                }
+            ],
+            "description": "Moon app is a lightweight PHP framework",
+            "keywords": [
+                "framework",
+                "moon"
+            ],
+            "support": {
+                "issues": "https://github.com/heropoo/moon/issues",
+                "source": "https://github.com/heropoo/moon/tree/v0.12.3"
+            },
+            "time": "2022-07-14T09:33:09+00:00"
         },
         {
             "name": "heropoo/request",
@@ -1454,7 +1561,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "heropoo/db": 20
+        "heropoo/db": 20,
+        "heropoo/moon": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
