@@ -6,6 +6,8 @@
  * Time: 12:21
  */
 
+require_once __DIR__.'/vendor/autoload.php';
+
 $config = require __DIR__ . '/config/load.php';
 
 $config_path = __DIR__ . '/config';
