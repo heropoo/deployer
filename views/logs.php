@@ -22,7 +22,7 @@
                 <?php foreach ($line['data'] as $item):?>
                     <li>
                         <div><?= $item['msg']?> <?= $item['code'] === 0 ? '✔️ Success' : '❌ Failed'?></div>
-                        <div><?= isset($item['commitIds'][0]) ? $item['commitIds'][0] : ''?> : <?= isset($item['commitIds'][1]) ? $item['commitIds'][1]: ''?></div>
+                        <div><a href="/diff"><?= isset($item['commitIds'][0]) ? $item['commitIds'][0] : ''?>:<?= isset($item['commitIds'][1]) ? $item['commitIds'][1]: ''?></a></div>
                     </li>
                 <?php endforeach;?>
                 </ul>
