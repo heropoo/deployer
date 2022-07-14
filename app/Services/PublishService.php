@@ -72,14 +72,16 @@ class PublishService
 
             $exist_status = -1;
             $stdout = $stderr = '';
+            $commitIds = [];
 
             $msg = $msg_prefix . "'{$host_config['name']}'";
 
             try {
                 $ssh = static::connect($host_config['host'], $host_config['port'], $host_config['user'], $private_key);
-                $ssh->enableQuietMode();
+//                $ssh->enableQuietMode();
                 $stdout = $ssh->exec($cmd);
-                $stderr = $ssh->getStdError();
+                $commitIds = self::matchCommitIds($stdout);
+//                $stderr = $ssh->getStdError();
                 $exist_status = $ssh->getExitStatus();
                 $ssh->disconnect();
             } catch (\Exception $e) {
@@ -91,6 +93,7 @@ class PublishService
                 "code" => $exist_status,
                 "stdout" => $stdout, // "> " . $cmd . PHP_EOL . $stdout,
                 "stderr" => $stderr,
+                "commitIds" => $commitIds,
             ];
         }
         return $data;
@@ -99,5 +102,14 @@ class PublishService
     public function getExecutedCommand()
     {
         return $this->cmd;
+    }
+
+    public static function matchCommitIds($string)
+    {
+        $res = preg_match_all("#commit (\w+)#", $string, $matches);
+        if($res && isset($matches[1])){
+            return $matches[1];
+        }
+        return [];
     }
 }
