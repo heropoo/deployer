@@ -35,15 +35,24 @@ class PublishService
         $private_key = $this->config['private_key'];
         $project_config = $this->config['projects'][$project];
         if ($action == 'fast_publish') {
-            $cmd = "cd {$project_config['path']}"
-                ." && echo 'before-commit-id: ' &&  git log --pretty=%H -1"
-                ." && git reset --hard FETCH_HEAD"
-                ." && git fetch && git checkout {$project_config['branch']}"
-                ." && git pull --recurse-submodules"
-                ." && echo 'after-commit-id: ' && git log --pretty=%H -1";
+            $cmd = "echo '> cd {$project_config['path']}'"
+                . " && cd {$project_config['path']}"
+                . " && echo '> git show --stat'"
+                . " && git show --stat"
+                . " && echo '> git reset --hard FETCH_HEAD && git reset --hard FETCH_HEAD && git fetch && git checkout {$project_config['branch']} && git pull --recurse-submodules'"
+                . " && git reset --hard FETCH_HEAD"
+                . " && git fetch && git checkout {$project_config['branch']}"
+                . " && git pull --recurse-submodules"
+                . " && echo '> git show --stat'"
+                . " && git show --stat";
             $msg_prefix = "git checkout files of project '{$project_config['name']}' on host ";
         } else if ($action == 'status') {
-            $cmd = "cd {$project_config['path']} && git show --stat && git status";
+            $cmd = "echo '> cd {$project_config['path']}'"
+                . " && cd {$project_config['path']}"
+                . " && echo '> git show --stat'"
+                . " && git show --stat"
+                . " && echo '> git status'"
+                . " && git status";
             $msg_prefix = "git status of project '{$project_config['name']}' on host ";
         } else {
             //throw new \Exception("Unknown action '{$action}'");
@@ -80,7 +89,7 @@ class PublishService
             $data[] = [
                 "msg" => $msg,
                 "code" => $exist_status,
-                "stdout" => "> " . $cmd . PHP_EOL . $stdout,
+                "stdout" => $stdout, // "> " . $cmd . PHP_EOL . $stdout,
                 "stderr" => $stderr,
             ];
         }

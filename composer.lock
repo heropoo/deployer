@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5344eb9becb02217c7c634021da7956e",
+    "content-hash": "cf700443fb4add16a577dd687d2546df",
     "packages": [
         {
             "name": "heropoo/config",
@@ -207,16 +207,16 @@
         },
         {
             "name": "heropoo/moon",
-            "version": "dev-master",
+            "version": "v0.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heropoo/moon.git",
-                "reference": "737af439573b95ac6f6466d192dd0c0040058909"
+                "reference": "56c2de47eb41cd13953f8d1c44774bb9f5484e51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heropoo/moon/zipball/737af439573b95ac6f6466d192dd0c0040058909",
-                "reference": "737af439573b95ac6f6466d192dd0c0040058909",
+                "url": "https://api.github.com/repos/heropoo/moon/zipball/56c2de47eb41cd13953f8d1c44774bb9f5484e51",
+                "reference": "56c2de47eb41cd13953f8d1c44774bb9f5484e51",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -237,7 +237,6 @@
                 "php": ">=5.4",
                 "symfony/http-foundation": "^4.3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -265,9 +264,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heropoo/moon/issues",
-                "source": "https://github.com/heropoo/moon/tree/v0.12.3"
+                "source": "https://github.com/heropoo/moon/tree/v0.12.4"
             },
-            "time": "2022-07-14T09:33:09+00:00"
+            "time": "2022-07-14T10:18:05+00:00"
         },
         {
             "name": "heropoo/request",
@@ -879,16 +878,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.5.2",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66"
+                "reference": "07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918",
+                "reference": "07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -898,12 +897,12 @@
                 ]
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=8.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.1-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -932,7 +931,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.2"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.1.1"
             },
             "funding": [
                 {
@@ -948,7 +947,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-02-25T11:15:52+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -1561,8 +1560,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "heropoo/db": 20,
-        "heropoo/moon": 20
+        "heropoo/db": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
