@@ -16,24 +16,24 @@ class IndexController
     {
         //$session = $request->getSession();
         //$session->destroy();
-        $deployer_config = config('load');
-        $projects = $deployer_config['projects'];
+        $deployerConfig = config('load');
+        $projects = $deployerConfig['projects'];
         return view('index', [
             'projects' => $projects
-        ], 'layouts/app')->setTitle($deployer_config['title']);
+        ], 'layouts/app')->setTitle($deployerConfig['title']);
     }
 
     public function publish(Request $request)
     {
         $server = $request->server;
         $username = isset($server['PHP_AUTH_USER']) ? trim($server['PHP_AUTH_USER']) : '';
-        $config = config('load');
-        $projects = $config['projects'];
+        $deployerConfig = config('load');
+        $projects = $deployerConfig['projects'];
 
         $action = isset($_POST['action']) ? trim($_POST['action']) : '';
         $dst_project = isset($_POST['project']) ? trim($_POST['project']) : '';
 
-        $service = new PublishService($config);
+        $service = new PublishService($deployerConfig);
         $res = $service->publish($dst_project, $action);
 
         $cmd = $service->getExecutedCommand();
@@ -48,7 +48,7 @@ class IndexController
                 'data' => $res
             ];
             error_log(json_encode($log_data, JSON_UNESCAPED_UNICODE) . PHP_EOL,
-                3, $config['deployer_log_file']);
+                3, $deployerConfig['deployer_log_file']);
         }
 
         return $res;
@@ -58,8 +58,8 @@ class IndexController
     public function logs(Request $request)
     {
         $lines = [];
-        $deployer_config = config('load');
-        $log_file = $deployer_config['deployer_log_file'];
+        $deployerConfig = config('load');
+        $log_file = $deployerConfig['deployer_log_file'];
         if (file_exists($log_file)) {
             $lines = file($log_file);
             $lines = array_reverse($lines);
@@ -67,14 +67,22 @@ class IndexController
 
         return view('logs', [
             'lines' => $lines,
-        ], 'layouts/app')->setTitle($deployer_config['title']);
+        ], 'layouts/app')->setTitle($deployerConfig['title']);
     }
 
     public function diff(Request $request){
         $beforeCommitId = $request->get('before');
         $afterCommitId = $request->get('after');;
         $hostId = $request->get('host');;
-        var_dump($beforeCommitId, $afterCommitId, $hostId);
+        $projectId = $request->get('project');;
+        //var_dump($beforeCommitId, $afterCommitId, $hostId);
+        $deployerConfig = config('load');
 
+        $service = new PublishService($deployerConfig);
+        $res = $service->showDiff($projectId, $hostId, $beforeCommitId, $afterCommitId);
+        //return $res['stdout'];
+        return view('diff', [
+            'res' => $res,
+        ], 'layouts/app')->setTitle($deployerConfig['title']);
     }
 }

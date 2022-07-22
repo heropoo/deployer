@@ -100,6 +100,39 @@ class PublishService
         return $data;
     }
 
+    public function showDiff($project, $host, $beforeCommitId, $afterCommitId)
+    {
+        $private_key = $this->config['private_key'];
+        $project_config = $this->config['projects'][$project];
+
+        $cmd = "cd {$project_config['path']}"
+            . " && git diff --full-index $beforeCommitId $afterCommitId";
+        $this->cmd = $cmd;
+        $host_config = $this->config['hosts'][$host];
+
+        $exist_status = -1;
+        $stdout = $stderr = '';
+
+        $msg = '';
+        try {
+            $ssh = static::connect($host_config['host'], $host_config['port'], $host_config['user'], $private_key);
+//                $ssh->enableQuietMode();
+            $stdout = $ssh->exec($cmd);
+//                $stderr = $ssh->getStdError();
+            $exist_status = $ssh->getExitStatus();
+            $ssh->disconnect();
+        } catch (\Exception $e) {
+            $msg .= " error: " . $e->getMessage();
+        }
+
+        return [
+            "code" => $exist_status,
+            "msg" => $msg,
+            "stdout" => $stdout,
+            "stderr" => $stderr,
+        ];
+    }
+
     public function getExecutedCommand()
     {
         return $this->cmd;
