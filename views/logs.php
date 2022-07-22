@@ -26,7 +26,7 @@
                     ?>
                     <li>
                         <div><?= $item['msg']?> <?= $item['code'] === 0 ? '✔️ Success' : '❌ Failed'?></div>
-                        <div><?= $beforeCommitId == $afterCommitId ? "<a href='/diff?_={$beforeCommitId}:{$afterCommitId}'>{$beforeCommitId}:{$afterCommitId}</a>" : "No change ($beforeCommitId)"?></div>
+                        <div><?= $beforeCommitId != $afterCommitId ? "<a href='/diff?_={$beforeCommitId}:{$afterCommitId}'>{$beforeCommitId}:{$afterCommitId}</a>" : "No change ($beforeCommitId)"?></div>
                     </li>
                 <?php endforeach;?>
                 </ul>
