@@ -94,6 +94,7 @@ class PublishService
                 "stdout" => $stdout, // "> " . $cmd . PHP_EOL . $stdout,
                 "stderr" => $stderr,
                 "commitIds" => $commitIds,
+                "host" => $host_id,
             ];
         }
         return $data;

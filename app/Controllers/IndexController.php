@@ -71,6 +71,10 @@ class IndexController
     }
 
     public function diff(Request $request){
+        $beforeCommitId = $request->get('before');
+        $afterCommitId = $request->get('after');;
+        $hostId = $request->get('host');;
+        var_dump($beforeCommitId, $afterCommitId, $hostId);
 
     }
 }

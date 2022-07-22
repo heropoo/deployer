@@ -23,10 +23,11 @@
                     <?php
                         $beforeCommitId = isset($item['commitIds'][0]) ? $item['commitIds'][0] : '';
                         $afterCommitId = isset($item['commitIds'][1]) ? $item['commitIds'][1]: '';
+                        $host = isset($item['host']) ? $item['host']: '';
                     ?>
                     <li>
                         <div><?= $item['msg']?> <?= $item['code'] === 0 ? '✔️ Success' : '❌ Failed'?></div>
-                        <div><?= $beforeCommitId != $afterCommitId ? "<a href='/diff?_={$beforeCommitId}:{$afterCommitId}'>{$beforeCommitId}:{$afterCommitId}</a>" : "No change ($beforeCommitId)"?></div>
+                        <div><?= $beforeCommitId != $afterCommitId ? "<a href='/diff?before={$beforeCommitId}&after={$afterCommitId}&host={$host}'>{$beforeCommitId}:{$afterCommitId}@{$host}</a>" : "No change ({$beforeCommitId}@{$host})"?></div>
                     </li>
                 <?php endforeach;?>
                 </ul>
