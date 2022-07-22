@@ -20,9 +20,13 @@
             <div>结果:
                 <ul>
                 <?php foreach ($line['data'] as $item):?>
+                    <?php
+                        $beforeCommitId = isset($item['commitIds'][0]) ? $item['commitIds'][0] : '';
+                        $afterCommitId = isset($item['commitIds'][1]) ? $item['commitIds'][1]: '';
+                    ?>
                     <li>
                         <div><?= $item['msg']?> <?= $item['code'] === 0 ? '✔️ Success' : '❌ Failed'?></div>
-                        <div><a href="/diff"><?= isset($item['commitIds'][0]) ? $item['commitIds'][0] : ''?>:<?= isset($item['commitIds'][1]) ? $item['commitIds'][1]: ''?></a></div>
+                        <div><?= $beforeCommitId == $afterCommitId ? "<a href='/diff?_={$beforeCommitId}:{$afterCommitId}'>{$beforeCommitId}:{$afterCommitId}</a>" : "No change ($beforeCommitId)"?></div>
                     </li>
                 <?php endforeach;?>
                 </ul>

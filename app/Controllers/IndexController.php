@@ -69,4 +69,8 @@ class IndexController
             'lines' => $lines,
         ], 'layouts/app')->setTitle($deployer_config['title']);
     }
+
+    public function diff(Request $request){
+
+    }
 }
