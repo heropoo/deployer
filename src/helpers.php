@@ -14,7 +14,7 @@ if (!function_exists('format_json')) {
      */
     function format_json($code = 0, $msg = "success", $data = [])
     {
-        header('Content-type: application/json;charset=utf-8');
+        header('Content-type:application/json;charset=utf-8');
         return json_encode([
             'code' => $code,
             'msg' => $msg,
@@ -50,16 +50,5 @@ if (!function_exists('generate_random_str')) {
             $random_str .= $str[$num];
         }
         return $random_str;
-    }
-}
-
-
-if (!function_exists('is_cli')) {
-    /**
-     * check if php running in cli mode
-     */
-    function is_cli()
-    {
-        return preg_match("/cli/i", php_sapi_name()) ? true : false;
     }
 }

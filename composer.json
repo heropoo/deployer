@@ -11,7 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Deployer\\": "src/"
+            "": "src/",
+            "App\\": "app/"
         },
         "files": [
             "src/helpers.php"
@@ -27,6 +28,8 @@
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
-        "phpseclib/phpseclib": "^3.0"
+        "phpseclib/phpseclib": "^3.0",
+        "heropoo/db": "dev-sqlite3",
+        "heropoo/moon": "^0.12"
     }
 }
