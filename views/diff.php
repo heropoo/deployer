@@ -1,3 +1,6 @@
+<?php
+/** @var \Moon\View $this */
+?>
 <style>
     .pre-output{
         background-color: #fff;
@@ -9,7 +12,7 @@
     <div class="row">
         <?php if($res['code'] === 0):?>
         <pre class="pre-output">
-            <code class="language-diff"><?= $res['stdout']?></code>
+            <code class="language-diff"><?= $this->e($res['stdout'])?></code>
         </pre>
         <?php else: ?>
         <pre><?= $res['msg'] . $res['stdout'] ?></pre>
