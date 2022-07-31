@@ -15,7 +15,7 @@ class UserCommand
 
         if (!file_exists($config_path . '/deployer.local.php')) {
             echo "Create local config './deployer.local.php' ";
-            $local_config_content = file_get_contents($config_path . '/deployer');
+            $local_config_content = file_get_contents($config_path . '/deployer.php');
             $new_secret_key = generate_random_str(32);
             $local_config_content = str_replace(
                 "'secret_key' => ''", "'secret_key' => '{$new_secret_key}'",
