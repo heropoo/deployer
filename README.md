@@ -1,6 +1,8 @@
 # Deployer
 一个使用git的简易项目发布工具
 
+![alt Deployer Example](docs/example.png)
+
 ## 安装配置
 
 ### 安装依赖库
@@ -8,7 +10,7 @@
 composer install
 ```
 
-### 创建用户
+### 初始化&创建用户
 ```sh
 php deployer user:add
 ```
@@ -60,5 +62,9 @@ return [
     //...
 ];
 ```
+
+至此配置完毕，打开浏览器访问: http://您的发布机器ip:8090/ 愉快的使用吧~
+
+
 
 
