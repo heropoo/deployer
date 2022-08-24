@@ -77,7 +77,7 @@ class IndexController
             if ($user && $user !== $line['user']) {
                 continue;
             }
-            $dstLines[] = $line;
+            $dstLines[] = json_encode($line, JSON_UNESCAPED_UNICODE);
         }
 
         return view('logs', ['lines' => $dstLines], 'layouts/app')->setTitle($deployerConfig['title']);
