@@ -15,8 +15,8 @@
         <div class="log-item bg-success">
 
             <div>时间: <?= $line['time']?></div>
-            <div>项目: <?= $line['project']?></div>
-            <div>用户: <?= $line['user']?></div>
+            <div>项目: <a href="/logs?project=<?= $line['project']?>"><?= $line['project']?></a></div>
+            <div>用户: <a href="/logs?user=<?= $line['user']?>"><?= $line['user']?></a></div>
             <div>结果:
                 <ul>
                 <?php foreach ($line['data'] as $item):?>
