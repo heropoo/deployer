@@ -3,3 +3,4 @@
 vendor/
 .env
 *.bk.php
+runtime/*.db
