@@ -13,5 +13,5 @@ $router->group(['middleware' => \App\Middleware\BasicAuth::class], function () u
     $router->get('/', 'IndexController::index');
     $router->post('/publish', 'IndexController::publish');
     $router->get('/logs', 'IndexController::logs');
-    $router->get('/diff', 'IndexController::diff');
+    $router->get('/logs/diff', 'IndexController::diff');
 });
