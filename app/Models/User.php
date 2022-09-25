@@ -4,6 +4,7 @@
 namespace App\Models;
 
 
+use App\Traits\UserAuth;
 use Moon\Db\Table;
 
 /**
@@ -17,6 +18,8 @@ use Moon\Db\Table;
 class User extends Table
 {
     protected $primaryKey = 'id';
+
+    use UserAuth;
 
     public static function getDb()
     {

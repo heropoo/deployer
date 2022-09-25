@@ -46,7 +46,8 @@ $path_info = App::get('request')->getPathInfo();
                     <?= App::get('user')->username?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="">修改密码</a></li>
+                    <li><a href="/user/cpwd">修改密码</a></li>
+                    <li><a href="/user/logout">退出</a></li>
                 </ul>
             </li>
         </ul>

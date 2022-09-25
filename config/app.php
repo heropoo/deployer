@@ -9,7 +9,7 @@ return [
         'db' => [
             'class' => '\Moon\Db\SqliteConnection',
             //'auto_inject_by_class'=> true, // default true
-            'master' => [
+            'config' =>[
                 'dsn' => 'sqlite:' . realpath(__DIR__ . '/../runtime/') . '/deployer.db',
                 'options' => [
                     PDO::ATTR_PERSISTENT => true

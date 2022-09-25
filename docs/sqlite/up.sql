@@ -2,6 +2,7 @@ CREATE TABLE user(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username VARCHAR(50) NOT NULL,
   password CHAR(50) not NULL,
+  login_token CHAR(32) not NULL DEFAULT '',
   create_time timestamp NOT NULL DEFAULT (datetime('now', 'localtime')),
   update_time datetime NOT NULL DEFAULT (datetime('now', 'localtime'))
 );
