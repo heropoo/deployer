@@ -57,6 +57,9 @@ class IndexController
 
     public function logs(Request $request)
     {
+        $project = $request->get('project');
+        $user = $request->get('user');
+
         $lines = [];
         $deployerConfig = config('load');
         $log_file = $deployerConfig['deployer_log_file'];
@@ -65,12 +68,23 @@ class IndexController
             $lines = array_reverse($lines);
         }
 
-        return view('logs', [
-            'lines' => $lines,
-        ], 'layouts/app')->setTitle($deployerConfig['title']);
+        $dstLines = [];
+        foreach ($lines as $line) {
+            $line = json_decode($line, 1);
+            if ($project && $project !== $line['project']) {
+                continue;
+            }
+            if ($user && $user !== $line['user']) {
+                continue;
+            }
+            $dstLines[] = json_encode($line, JSON_UNESCAPED_UNICODE);
+        }
+
+        return view('logs', ['lines' => $dstLines], 'layouts/app')->setTitle($deployerConfig['title']);
     }
 
-    public function diff(Request $request){
+    public function diff(Request $request)
+    {
         $beforeCommitId = $request->get('before');
         $afterCommitId = $request->get('after');;
         $hostId = $request->get('host');;

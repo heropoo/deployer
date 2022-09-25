@@ -39,9 +39,16 @@ $path_info = App::get('request')->getPathInfo();
 <div class="header">
     <div class="nav-bar">
         <ul class="nav nav-pills">
-            <li role="presentation" <?= $path_info == '/' ? 'class="active"' : ''?> ><a href="/">工作台</a></li>
-            <li role="presentation" <?= strpos($path_info, '/logs') === 0 ? 'class="active"' : ''?> ><a href="/logs">查看日志</a></li>
-            <li role="presentation" class="pull-right"><a href="">Test</a></li>
+            <li role="presentation" class="pull-left<?= $path_info == '/' ? ' active' : ''?>" ><a href="/">工作台</a></li>
+            <li role="presentation" class="pull-left<?= strpos($path_info, '/logs') === 0 ? ' active' : ''?>" ><a href="/logs">查看日志</a></li>
+            <li role="presentation" class="dropdown pull-right">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <?= App::get('user')->username?> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="">修改密码</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

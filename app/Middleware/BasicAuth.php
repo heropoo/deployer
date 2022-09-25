@@ -7,6 +7,7 @@
 namespace App\Middleware;
 
 
+use App\Models\User;
 use Moon\Request\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,6 +34,11 @@ class BasicAuth
                 );
             }
         }
+
+        $user = new User();
+        $user->username = $username;
+
+        \App::$container->instance('user', $user);
 
         return $next($request);
     }
