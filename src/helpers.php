@@ -52,3 +52,28 @@ if (!function_exists('generate_random_str')) {
         return $random_str;
     }
 }
+
+if(!function_exists('copy_dir')){
+    /**
+     * @param string $src
+     * @param string $dst
+     */
+    function copy_dir($src, $dst)
+    {
+        if (!is_dir($dst)) {
+            @mkdir($dst, 0755, true);
+        }
+        $dir = opendir($src);
+        while (false !== ($file = readdir($dir))) {
+            if (($file != '.') && ($file != '..')) {
+                if (is_dir($src . '/' . $file)) {
+                    copy_dir($src . '/' . $file, $dst . '/' . $file);
+                    continue;
+                } else {
+                    copy($src . '/' . $file, $dst . '/' . $file);
+                }
+            }
+        }
+        closedir($dir);
+    }
+}

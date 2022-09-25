@@ -3,3 +3,4 @@
 vendor/
 .env
 *.bk.php
+node_modules/
