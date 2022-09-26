@@ -27,16 +27,22 @@ class BasicAuth
         } else {
             $username = isset($server['PHP_AUTH_USER']) ? trim($server['PHP_AUTH_USER']) : '';
             $pwd = $config['secret_key'] . trim($server['PHP_AUTH_PW']);
-            if (!key_exists($username, $users) || !password_verify($pwd, $users[$username])) {
+
+//            if (!key_exists($username, $users) || !password_verify($pwd, $users[$username])) {
+//                return new Response(
+//                    '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
+//                    401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
+//                );
+//            }
+            /** @var User $user */
+            $user = User::find()->where("username=?", [$username])->first();
+            if (empty($user) || !password_verify($pwd, $user->password)) {
                 return new Response(
                     '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
                     401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
                 );
             }
         }
-
-        $user = new User();
-        $user->username = $username;
 
         \App::$container->instance('user', $user);
 

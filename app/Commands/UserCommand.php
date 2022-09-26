@@ -4,6 +4,8 @@
 namespace App\Commands;
 
 
+use App\Models\User;
+
 class UserCommand
 {
     public function run()
@@ -72,5 +74,12 @@ class UserCommand
             echo "failed\n";
         }
 
+        $user = new User();
+        $user->username = $username;
+        $user->password = $pwd;
+        $user->login_token = md5(time() . $config['secret_key']);
+        $user->create_time = date('Y-m-d H:i:s');
+        $user->update_time = date('Y-m-d H:i:s');
+        $user->save();
     }
 }
