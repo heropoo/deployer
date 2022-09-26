@@ -74,12 +74,17 @@ class UserCommand
             echo "failed\n";
         }
 
-        $user = new User();
-        $user->username = $username;
+        $user = User::find()->where("username=?", [$username])->first();
+        if(empty($user)){
+            $user = new User();
+            $user->username = $username;
+            $user->create_time = date('Y-m-d H:i:s');
+        }
         $user->password = $pwd;
-        $user->login_token = md5(time() . $config['secret_key']);
-        $user->create_time = date('Y-m-d H:i:s');
+        $user->login_token = '';
+        $user->token_expiration_time = date('Y-m-d H:i:s');
         $user->update_time = date('Y-m-d H:i:s');
-        $user->save();
+        $res = $user->save();
+        var_dump($res);
     }
 }

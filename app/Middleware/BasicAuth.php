@@ -15,8 +15,11 @@ class BasicAuth
 {
     public function handle(Request $request, \Closure $next)
     {
+//        $session = $request->getSession();
+//        $token_expiration_time = $session->get('token_expiration_time');
+
         $config = config('load');
-        $users = $config['users'];
+        //$users = $config['users'];
         $realm = md5($config['secret_key']);
         $server = $request->server;
         if (!isset($server['PHP_AUTH_USER'])) {
@@ -36,12 +39,23 @@ class BasicAuth
 //            }
             /** @var User $user */
             $user = User::find()->where("username=?", [$username])->first();
-            if (empty($user) || !password_verify($pwd, $user->password)) {
+            if (empty($user)
+                || !password_verify($pwd, $user->password)
+                || $user->token_expiration_time < date('Y-m-d H:i:s')
+//                || ($token_expiration_time < date('Y-m-d H:i:s'))
+            ) {
+                if($user){
+                    $user->token_expiration_time = date('Y-m-d H:i:s', time() + 5);
+                    $user->save();
+                }
                 return new Response(
                     '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
                     401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
                 );
             }
+
+            var_dump($user->token_expiration_time, date('Y-m-d H:i:s'));
+
         }
 
         \App::$container->instance('user', $user);
