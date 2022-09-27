@@ -18,6 +18,10 @@ if (file_exists(__DIR__ . '/users.local.php')) {
 
 if (file_exists(__DIR__ . '/projects.local.php')) {
     $projects = require __DIR__ . '/projects.local.php';
+    foreach (glob(__DIR__ . "/projects/*.local.php") as $filename) {
+        $include_projects = require $filename;
+        $projects = array_merge($projects, $include_projects);
+    }
     $config['projects'] = $projects;
 }
 
