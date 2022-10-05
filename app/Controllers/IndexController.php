@@ -18,7 +18,17 @@ class IndexController
         //$session->destroy();
         $deployerConfig = config('load');
         $projects = $deployerConfig['projects'];
+        $current_project = $request->get('project');
         return view('index', [
+            'projects' => $projects,
+            'current_project' => $current_project,
+        ], 'layouts/app')->setTitle($deployerConfig['title']);
+    }
+
+    public function projects(){
+        $deployerConfig = config('load');
+        $projects = $deployerConfig['projects'];
+        return view('projects', [
             'projects' => $projects
         ], 'layouts/app')->setTitle($deployerConfig['title']);
     }

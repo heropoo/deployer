@@ -43,6 +43,7 @@ $path_info = App::get('request')->getPathInfo();
     <div class="nav-bar">
         <ul class="nav nav-pills">
             <li role="presentation" <?= $path_info == '/' ? 'class="active"' : ''?> ><a href="/">工作台</a></li>
+            <li role="presentation" <?= $path_info == '/projects' ? 'class="active"' : ''?> ><a href="/projects">项目列表</a></li>
             <li role="presentation" <?= $path_info == '/logs' ? 'class="active"' : ''?> ><a href="/logs">查看日志</a></li>
         </ul>
     </div>

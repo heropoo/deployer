@@ -11,7 +11,7 @@
                 <select name="project" class="form-control project" required>
                     <option value="">请选择</option>
                     <?php foreach ($projects as $project_id => $project): ?>
-                        <option value="<?= $project_id ?>"><?= $project['name'] ?></option>
+                        <option value="<?= $project_id ?>" <?= $project_id == $current_project ? 'selected' : ''?> ><?= $project['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
