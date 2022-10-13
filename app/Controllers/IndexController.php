@@ -81,7 +81,7 @@ class IndexController
         $dstLines = [];
         foreach ($lines as $line) {
             $line = json_decode($line, 1);
-            if ($project && $project !== $line['project']) {
+            if ($project && $project !== $line['project_id']) {
                 continue;
             }
             if ($user && $user !== $line['user']) {
