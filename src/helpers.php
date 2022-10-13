@@ -52,3 +52,22 @@ if (!function_exists('generate_random_str')) {
         return $random_str;
     }
 }
+
+if (!function_exists('varexport')) {
+    /**
+     * var_export() with square brackets and indented 4 spaces.
+     * @see https://www.php.net/manual/zh/function.var-export.php#122853
+     * @param $expression
+     * @param false $return
+     * @return string
+     */
+    function varexport($expression, $return = FALSE)
+    {
+        $export = var_export($expression, TRUE);
+        $export = preg_replace("/^([ ]*)(.*)/m", '$1$1$2', $export);
+        $array = preg_split("/\r\n|\n|\r/", $export);
+        $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
+        $export = join(PHP_EOL, array_filter(["["] + $array));
+        if ((bool)$return) return $export; else echo $export;
+    }
+}
