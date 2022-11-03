@@ -16,7 +16,7 @@ class DebugCommand
         $router = \App::$container->get('router');
         $routes = $router->getRoutes();
         echo "| Name | Methods | Path | Action | Middleware |\n";
-        echo "-----------------------------------------------\n";
+        echo "|------|---------|------|--------|------------|\n";
         foreach ($routes as $route) {
             /** @var Route $route */
             echo '| '.$route->getName();
