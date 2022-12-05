@@ -40,6 +40,6 @@ class UserController
 
     public function logoutAction()
     {
-        return 'logout';
+        return '//todo logout';
     }
 }
