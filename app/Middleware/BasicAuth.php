@@ -7,6 +7,7 @@
 namespace App\Middleware;
 
 
+use App\Models\User;
 use Moon\Request\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,6 +32,14 @@ class BasicAuth
                     '401 Unauthorized' . '<br> <button onclick="window.location.reload();">Login Again</button>',
                     401, ['WWW-Authenticate' => 'Basic realm="' . $realm . '"']
                 );
+            }
+
+            \App::$instance->container->exists('user');
+            if (!\App::$instance->container->exists('user')) {
+                $user = new User();
+                $user->username = $username;
+                $user->password = $pwd;
+                \App::$instance->container->add('user', $user);
             }
         }
 

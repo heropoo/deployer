@@ -45,6 +45,16 @@ $path_info = App::get('request')->getPathInfo();
             <li role="presentation" <?= $path_info == '/' ? 'class="active"' : ''?> ><a href="/">工作台</a></li>
             <li role="presentation" <?= $path_info == '/projects' ? 'class="active"' : ''?> ><a href="/projects">项目列表</a></li>
             <li role="presentation" class="pull-left<?= strpos($path_info, '/logs') === 0 ? ' active' : ''?>" ><a href="/logs">查看日志</a></li>
+
+            <li role="presentation" class="dropdown pull-right">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <?= App::get('user')->username ?> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/user/cpwd">修改密码</a></li>
+                    <li><a href="/user/logout">退出</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
