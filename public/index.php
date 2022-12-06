@@ -10,5 +10,5 @@ require __DIR__.'/../vendor/autoload.php';
 use Moon\Application;
 
 $app = new Application(dirname(__DIR__));
-APP::setVersion('v1.6.3');
+APP::setVersion('v1.6.4-preview');
 $app->run();
