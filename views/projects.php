@@ -25,7 +25,18 @@
         </div>
        <ul>
            <?php foreach ($projects as $projectKey => $item):?>
-           <li class="bg-info project-item"><a href="/?project=<?= $projectKey?>"><?= $item['name']?></a></li>
+           <li class="bg-info project-item">
+               <a href="/?project=<?= $projectKey?>"><?= $item['name']?></a>
+               &nbsp;&nbsp;
+               <a href="#" class="edit-project"
+                  data-id="<?= $projectKey?>"
+                  data-name="<?= $item['name']?>"
+                  data-path="<?= $item['path']?>"
+                  data-branch="<?= $item['branch']?>"
+                  data-hosts="<?= implode(',', $item['hosts'])?>"
+                  data-group="<?= $item['group']?>"
+               ><i class="glyphicon glyphicon-edit"></i></a>
+           </li>
            <?php  endforeach;?>
        </ul>
     </div>
@@ -58,7 +69,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label">Path</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="project_path" value="" required>
+                                <input type="text" class="form-control" name="path" value="" required>
                             </div>
                         </div>
 
@@ -70,16 +81,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Group</label>
+                            <label for="" class="col-sm-2 control-label">Hosts</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="group" value="" required>
+                                <input type="text" class="form-control" name="hosts" value="" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Host</label>
+                            <label for="" class="col-sm-2 control-label">Group</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="host" value="" required>
+                                <input type="text" class="form-control" name="group" value="" required>
                             </div>
                         </div>
 
@@ -108,7 +119,7 @@
     $("#createProjectForm").submit(function(){
         var data = $(this).serialize();
         $.post("/project/create", data, function(res){
-            if(res.code === 200){
+            if(res.code === 0){
                 alert(res.message);
                 window.location.reload();
             }else{
@@ -116,5 +127,20 @@
             }
         }, "json");
         return false;
+    });
+    $(".edit-project").click(function(){
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var path = $(this).data('path');
+        var branch = $(this).data('branch');
+        var hosts = $(this).data('hosts');
+        var group = $(this).data('group');
+        $("#createProjectForm input[name=id]").val(id);
+        $("#createProjectForm input[name=name]").val(name);
+        $("#createProjectForm input[name=path]").val(path);
+        $("#createProjectForm input[name=branch]").val(branch);
+        $("#createProjectForm input[name=hosts]").val(hosts);
+        $("#createProjectForm input[name=group]").val(group);
+        $("#createProjectModal").modal("show");
     });
 </script>
