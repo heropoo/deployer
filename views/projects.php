@@ -34,8 +34,9 @@
                   data-path="<?= $item['path']?>"
                   data-branch="<?= $item['branch']?>"
                   data-hosts="<?= implode(',', $item['hosts'])?>"
-                  data-group="<?= $item['group']?>"
+                  data-group="<?= $item['group'] ?? ''?>"
                ><i class="glyphicon glyphicon-edit"></i></a>
+               <a href="#" class="delete-project" data-id="<?= $projectKey?>"><i class="glyphicon glyphicon-trash"></i></a>
            </li>
            <?php  endforeach;?>
        </ul>
@@ -142,5 +143,18 @@
         $("#createProjectForm input[name=hosts]").val(hosts);
         $("#createProjectForm input[name=group]").val(group);
         $("#createProjectModal").modal("show");
+    });
+    $(".delete-project").click(function(){
+        var id = $(this).data('id');
+        if(confirm("确认要删除项目'"+id+"'?")){
+            $.post("/project/delete", {id:id}, function(res){
+                if(res.code === 0){
+                    alert(res.message);
+                    window.location.reload();
+                }else{
+                    alert(res.message);
+                }
+            }, "json");
+        }
     });
 </script>

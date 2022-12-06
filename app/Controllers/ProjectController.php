@@ -30,4 +30,17 @@ class ProjectController
         }
         return ["code" => 0, 'message' => "Success"];
     }
+
+    public function deleteAction(Request $request){
+        $id = trim($request->get('id'));
+        if (strlen($id) == 0) {
+            return ["code" => 400, "message" => "Parameter error"];
+        }
+
+        $res = ProjectService::delete($id);
+        if (!$res) {
+            return ["code" => 500, "message" => "Failed"];
+        }
+        return ["code" => 0, 'message' => "Success"];
+    }
 }
