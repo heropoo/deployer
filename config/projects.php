@@ -8,6 +8,7 @@ return [
         'hosts' => [ //目标机器列表
             'prod-1', 'prod-2'
         ],
+        'group' => 'project1', //项目分组
     ],
     'project2' => [
         'name' => '示例项目2',
