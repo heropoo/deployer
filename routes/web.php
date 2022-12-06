@@ -16,4 +16,5 @@ $router->group(['middleware' => \App\Middleware\BasicAuth::class], function () u
     $router->get('/logs', 'IndexController::logs');
     $router->get('/logs/diff', 'IndexController::diff');
     $router->controller('user', 'UserController');
+    $router->controller('project', 'ProjectController');
 });
