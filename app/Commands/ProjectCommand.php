@@ -53,8 +53,9 @@ class ProjectCommand
         ];
 
         foreach ($paths as $path) {
-            $res = chmod($path, 0777);
-            echo "chmod -R 777 $path    " . ($res ? 'OK' : 'Failed') . PHP_EOL;
+            //$res = chmod($path, 0777);
+            exec("chmod -R 777 $path", $output, $res);
+            echo "chmod -R 777 $path    " . ($res === 0 ? 'OK' : 'Failed') . PHP_EOL;
         }
 
         //todo other
