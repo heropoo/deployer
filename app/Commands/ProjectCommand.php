@@ -40,4 +40,19 @@ class ProjectCommand
             echo "Tidy {$project_group_file} " . ($res ? 'OK' : 'Failed') . PHP_EOL;
         }
     }
+
+    public function initProject(){
+        $rootPath = root_path();
+        $paths = [
+            $rootPath.'/runtime',
+            $rootPath.'/config/projects',
+            $rootPath.'/config/users.local.php',
+            $rootPath.'/config/hosts.local.php',
+        ];
+
+        foreach($paths as $path) {
+            $ret = chmod($path, 0777);
+            echo "\r\nchmod -R 777 $path    -> ".($ret ? 'success' : 'fail');
+        }
+    }
 }
