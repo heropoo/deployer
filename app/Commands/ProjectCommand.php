@@ -41,18 +41,22 @@ class ProjectCommand
         }
     }
 
-    public function initProject(){
+    public function initProject()
+    {
+        // permission
         $rootPath = root_path();
         $paths = [
-            $rootPath.'/runtime',
-            $rootPath.'/config/projects',
-            $rootPath.'/config/users.local.php',
-            $rootPath.'/config/hosts.local.php',
+            $rootPath . '/runtime',
+            $rootPath . '/config/projects',
+            $rootPath . '/config/users.local.php',
+            $rootPath . '/config/hosts.local.php',
         ];
 
-        foreach($paths as $path) {
-            $ret = chmod($path, 0777);
-            echo "\r\nchmod -R 777 $path    -> ".($ret ? 'success' : 'fail');
+        foreach ($paths as $path) {
+            $res = chmod($path, 0777);
+            echo "chmod -R 777 $path    " . ($res ? 'OK' : 'Failed') . PHP_EOL;
         }
+
+        //todo other
     }
 }
