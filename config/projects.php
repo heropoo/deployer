@@ -8,7 +8,7 @@ return [
         'hosts' => [ //目标机器列表
             'prod-1', 'prod-2'
         ],
-        'group' => 'project1', //项目分组
+        'group' => '', //项目分组
     ],
     'project2' => [
         'name' => '示例项目2',
@@ -17,7 +17,7 @@ return [
         'hosts' => [ //目标机器列表
             'prod-1'
         ],
-        'group' => 'project2', //项目分组
+        'group' => '', //项目分组
     ],
     'project2_test' => [
         'name' => '示例项目2测试',
@@ -26,6 +26,6 @@ return [
         'hosts' => [ //目标机器列表
             'prod-1'
         ],
-        'group' => 'project2', //项目分组
+        'group' => '', //项目分组
     ],
 ];
