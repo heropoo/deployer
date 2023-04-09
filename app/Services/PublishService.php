@@ -7,6 +7,7 @@
 namespace App\Services;
 
 
+use Monolog\Logger;
 use phpseclib3\Crypt\PublicKeyLoader;
 use phpseclib3\Net\SSH2;
 
@@ -107,6 +108,11 @@ class PublishService
 
         $cmd = "cd {$project_config['path']}"
             . " && git diff --full-index $beforeCommitId $afterCommitId";
+
+        /** @var Logger $logger */
+        $logger = \App::get('logger');
+        $logger->info("diff cmd: ".$cmd);
+
         $this->cmd = $cmd;
         $host_config = $this->config['hosts'][$host];
 
