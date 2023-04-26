@@ -15,7 +15,6 @@ class StaticAssetsService
         'jquery' => 'node_modules/jquery/dist',
         'bootstrap' => 'node_modules/bootstrap/dist',
         'font-awesome' => 'node_modules/font-awesome',
-        'highlight.js' => 'node_modules/highlight.js',
     ];
 
     public static function install()
