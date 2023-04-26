@@ -1,0 +1,29 @@
+{
+  "name": "deployer",
+  "version": "1.0.0",
+  "description": "一个使用git的简易项目发布工具",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "jquery": "^1.12.4",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heropoo/deployer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heropoo/deployer/issues"
+  },
+  "homepage": "https://github.com/heropoo/deployer#readme"
+}

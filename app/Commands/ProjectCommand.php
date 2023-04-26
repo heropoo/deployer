@@ -7,6 +7,8 @@
 namespace App\Commands;
 
 
+use App\Services\StaticAssetsService;
+
 class ProjectCommand
 {
     /**
@@ -57,6 +59,10 @@ class ProjectCommand
             exec("chmod -R 777 $path", $output, $res);
             echo "chmod -R 777 $path    " . ($res === 0 ? 'OK' : 'Failed') . PHP_EOL;
         }
+
+        // Install static assets
+        echo "Install static assets:\n";
+        echo StaticAssetsService::install();
 
         //todo other
     }

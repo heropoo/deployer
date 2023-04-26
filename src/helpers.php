@@ -71,3 +71,28 @@ if (!function_exists('varexport')) {
         if ((bool)$return) return $export; else echo $export;
     }
 }
+
+if(!function_exists('copy_dir')){
+    /**
+     * @param string $src
+     * @param string $dst
+     */
+    function copy_dir(string $src, string $dst)
+    {
+        if (!is_dir($dst)) {
+            @mkdir($dst, 0755, true);
+        }
+        $dir = opendir($src);
+        while (false !== ($file = readdir($dir))) {
+            if (($file != '.') && ($file != '..')) {
+                if (is_dir($src . '/' . $file)) {
+                    copy_dir($src . '/' . $file, $dst . '/' . $file);
+                    continue;
+                } else {
+                    copy($src . '/' . $file, $dst . '/' . $file);
+                }
+            }
+        }
+        closedir($dir);
+    }
+}
