@@ -29,7 +29,7 @@ $path_info = App::get('request')->getPathInfo();
             padding: 1rem 2rem;
         }
         .main{
-            padding: 2rem 4rem;
+            padding: 2rem 4rem 4rem 4rem;
         }
         .form-control{margin-right: 10px}
         .result-message{font-size: 2rem}
