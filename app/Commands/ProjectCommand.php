@@ -7,6 +7,7 @@
 namespace App\Commands;
 
 
+use App\Services\ConfigService;
 use App\Services\StaticAssetsService;
 
 class ProjectCommand
@@ -41,29 +42,5 @@ class ProjectCommand
             $res = file_put_contents($project_group_file, "<?php\nreturn " . varexport($all_group_projects, true) . ';');
             echo "Tidy {$project_group_file} " . ($res ? 'OK' : 'Failed') . PHP_EOL;
         }
-    }
-
-    public function initProject()
-    {
-        // permission
-        $rootPath = root_path();
-        $paths = [
-            $rootPath . '/runtime',
-            $rootPath . '/config/projects',
-            $rootPath . '/config/users.local.php',
-            $rootPath . '/config/hosts.local.php',
-        ];
-
-        foreach ($paths as $path) {
-            //$res = chmod($path, 0777);
-            exec("chmod -R 777 $path", $output, $res);
-            echo "chmod -R 777 $path    " . ($res === 0 ? 'OK' : 'Failed') . PHP_EOL;
-        }
-
-        // Install static assets
-        echo "Install static assets:\n";
-        echo StaticAssetsService::install();
-
-        //todo other
     }
 }

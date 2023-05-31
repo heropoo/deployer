@@ -7,6 +7,7 @@
 namespace App\Controllers;
 
 
+use App\Services\LogService;
 use App\Services\PublishService;
 use Moon\Request\Request;
 
@@ -73,6 +74,9 @@ class IndexController
         $lines = [];
         $deployerConfig = config('load');
         $log_file = $deployerConfig['deployer_log_file'];
+
+        LogService::gc($log_file);
+
         if (file_exists($log_file)) {
             $lines = file($log_file);
             $lines = array_reverse($lines);

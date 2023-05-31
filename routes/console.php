@@ -8,7 +8,7 @@
  * @var \Moon\Console\Console $console
  */
 
-$console->add('init', 'ProjectCommand::initProject', 'Project init');
+$console->add('init', 'InitCommand::run', 'Init');
 $console->add('user:add', 'UserCommand::run', 'Add a user');
 $console->add('fmc', 'FillModelCommentCommand::run', 'Fill Model Comment');
 $console->add('serve', 'HttpServerCommand::run', 'Run a http server');

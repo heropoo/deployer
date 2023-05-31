@@ -42,4 +42,49 @@ class UserController
     {
         return '//todo logout';
     }
+
+    public function indexAction()
+    {
+        $deployerConfig = config('load');
+        $users = $deployerConfig['users'];
+        return view('users', [
+            'users' => $users
+        ], 'layouts/app')->setTitle($deployerConfig['title']);
+    }
+
+    public function createAction(Request $request)
+    {
+        $username = trim($request->get('name'));
+        $password = trim($request->get('password'));
+        $res = UserService::createUser($username, $password);
+
+        if ($res) {
+            return [
+                'code' => 0,
+                'message' => 'success',
+            ];
+        } else {
+            return [
+                'code' => 500,
+                'message' => 'failed',
+            ];
+        }
+    }
+
+    public function deleteAction(Request $request)
+    {
+        $username = trim($request->get('id'));
+        $res = UserService::deleteUser($username);
+        if ($res) {
+            return [
+                'code' => 0,
+                'message' => 'success',
+            ];
+        } else {
+            return [
+                'code' => 500,
+                'message' => 'failed',
+            ];
+        }
+    }
 }

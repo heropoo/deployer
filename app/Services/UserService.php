@@ -32,4 +32,52 @@ class UserService
 
         return file_put_contents($users_config_file, "<?php\nreturn " . var_export($users, true) . ";");
     }
+
+    public static function createUser($username, $password)
+    {
+        $config = config('load');
+        $config_path = root_path('config');
+        $pwd = password_hash($config['secret_key'] . $password, PASSWORD_DEFAULT);
+
+        $users_config_file = $config_path . '/users.local.php';
+        if (file_exists($users_config_file)) {
+            $users = require $users_config_file;
+        }
+
+        if (empty($users) || !is_array($users)) {
+            $users = [];
+        }
+
+        $users[$username] = $pwd;
+
+        $res = file_put_contents($users_config_file, "<?php\nreturn " . var_export($users, true) . ";");
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function deleteUser($username)
+    {
+        $config_path = root_path('config');
+
+        $users_config_file = $config_path . '/users.local.php';
+        if (file_exists($users_config_file)) {
+            $users = require $users_config_file;
+        }
+
+        if (empty($users) || !is_array($users)) {
+            $users = [];
+        }
+
+        unset($users[$username]);
+
+        $res = file_put_contents($users_config_file, "<?php\nreturn " . var_export($users, true) . ";");
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
