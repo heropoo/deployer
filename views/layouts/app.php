@@ -52,7 +52,7 @@ $path_info = App::get('request')->getPathInfo();
             <li role="presentation" <?= $path_info == '/projects' ? 'class="active"' : ''?> ><a href="/projects">项目列表</a></li>
             <li role="presentation" class="pull-left<?= strpos($path_info, '/logs') === 0 ? ' active' : ''?>" ><a href="/logs">查看日志</a></li>
             <li role="presentation" class="pull-left<?= strpos($path_info, '/user') === 0 ? ' active' : ''?>" ><a href="/user/index">用户管理</a></li>
-            <li role="presentation" class="pull-left<?= strpos($path_info, '/hosts') === 0 ? ' active' : ''?>" ><a href="/hosts">机器管理</a></li>
+            <li role="presentation" class="pull-left<?= strpos($path_info, '/host') === 0 ? ' active' : ''?>" ><a href="/host/index">机器管理</a></li>
 
             <li role="presentation" class="dropdown pull-right">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
