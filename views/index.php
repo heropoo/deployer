@@ -1,6 +1,12 @@
 <?php
 ?>
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs.min.css">
+<style>
+    .pre-output{
+        background-color: #fff;
+        margin-bottom: 3rem;
+    }
+</style>
 <div class="container-fluid">
     <div class="row">
         <h2>快速代码发布</h2>
@@ -67,11 +73,18 @@
             }else{
                 tpl += "<div class=\"result-message\">"+item.msg+"  ❌ Failed </div>";
             }
-            tpl += "<div>output: <pre>" + item.stdout + "</pre>"
-                + "<div>error: <pre>" + item.stderr + "</pre>"
+            tpl += "<div>output: <pre class='pre-output'><code class='language-bash'>" + item.stdout + "</code></pre>"
+                + "<div>error: <pre class='pre-output'>" + item.stderr + "</pre>"
             tpl += '</div>';
         }
         //console.log(tpl);
         $("#result").html(tpl);
+        hljs.highlightAll();
     }
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
+        hljs.highlightAll();
+    };
 </script>
