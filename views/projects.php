@@ -26,7 +26,7 @@
        <ul>
            <?php foreach ($projects as $projectKey => $item):?>
            <li class="bg-info project-item">
-               <a href="/?project=<?= $projectKey?>"><?= $item['name']?></a>
+               <a href="/?project=<?= $projectKey?>"><?= $item['name'] . '@'. implode(',', $item['hosts'])?></a>
                &nbsp;&nbsp;
                <a href="#" class="edit-project"
                   data-id="<?= $projectKey?>"
