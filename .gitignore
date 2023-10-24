@@ -5,3 +5,5 @@ vendor/
 *.bk.php
 runtime/*.db
 node_modules/
+composer.lock
+package-lock.json
