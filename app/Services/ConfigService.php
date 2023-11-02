@@ -55,14 +55,11 @@ class ConfigService
     protected static function createSSHKey()
     {
         $private = RSA::createKey();
+        $privateKeyStr = $private->toString('OpenSSH');
         $public = $private->getPublicKey();
-        $publicKeyStr = $public->__toString();
-        $publicKeyStr = str_replace("-----BEGIN PUBLIC KEY-----", '', $publicKeyStr);
-        $publicKeyStr = str_replace("-----END PUBLIC KEY-----", '', $publicKeyStr);
-        $publicKeyStr = str_replace("\r\n", '', $publicKeyStr);
-        $publicKeyStr = 'ssh-rsa '.$publicKeyStr;
+        $publicKeyStr = $public->toString('OpenSSH');
         return [
-            'private' => $private->__toString(),
+            'private' => $privateKeyStr,
             'public' => $publicKeyStr,
         ];
     }
