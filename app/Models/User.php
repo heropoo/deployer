@@ -3,9 +3,6 @@
 
 namespace App\Models;
 
-
-use Moon\Db\Table;
-
 /**
  * Class User
  * @property string $username
@@ -14,17 +11,6 @@ use Moon\Db\Table;
  * @property string $update_time
  * @package App\Models
  */
-class User extends Table
-{
-    protected $primaryKey = 'id';
+class User{
 
-    public static function getDb()
-    {
-        return \App::get('db');
-    }
-
-    public static function tableName()
-    {
-        return 'user';
-    }
 }
