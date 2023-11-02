@@ -13,10 +13,6 @@ class UserCommand
     {
         ConfigService::initConfig();
 
-        $config_path = root_path('config');
-
-        $config = require $config_path . '/load.php';
-
         $stdin = fopen("php://stdin", "r");
         $s = "Input username: ";
         fwrite($stdin, $s, strlen($s));
@@ -33,9 +29,9 @@ class UserCommand
         $res = UserService::createUser($username, $password);
 
         if ($res) {
-            echo "success\n";
+            echo "OK\n";
         } else {
-            echo "failed\n";
+            echo "Failed\n";
         }
 
     }
