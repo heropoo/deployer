@@ -29,7 +29,6 @@
         "ext-curl": "*",
         "ext-json": "*",
         "phpseclib/phpseclib": "^3.0",
-        "heropoo/db": "dev-sqlite3",
         "heropoo/moon": "^0.12"
     }
 }
