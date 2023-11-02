@@ -94,6 +94,12 @@
                         </div>
                     </form>
 
+                <?php if($publicKey):?>
+                    <div>
+                        <p>Please put the following public key into the `~/.ssh/authorized_keys` file of the target server</p>
+                        <pre><?= $publicKey?></pre>
+                    </div>
+                <?php endif;?>
                 </div>
             </div>
             <div class="modal-footer">
@@ -136,7 +142,7 @@
     });
     $(".delete-project").click(function(){
         var id = $(this).data('id');
-        if(confirm("确认要删除此项目'"+id+"'?")){
+        if(confirm("Confirm to delete this item '"+id+"'?")){
             $.post("/host/delete", {id:id}, function(res){
                 if(res.code === 0){
                     alert(res.message);

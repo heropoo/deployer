@@ -17,8 +17,10 @@ class HostController
     {
         $deployerConfig = config('load');
         $hosts = $deployerConfig['hosts'];
+        $publicKey = isset($deployerConfig['public_key']) ? $deployerConfig['public_key'] : '';
         return view('hosts', [
-            'hosts' => $hosts
+            'hosts' => $hosts,
+            'publicKey' => $publicKey
         ], 'layouts/app')->setTitle($deployerConfig['title']);
     }
 
