@@ -56,9 +56,13 @@ class ConfigService
     {
         $private = RSA::createKey();
         $public = $private->getPublicKey();
+        $publicKeyStr = $public->__toString();
+        $publicKeyStr = str_replace("-----BEGIN PUBLIC KEY-----", '', $publicKeyStr);
+        $publicKeyStr = str_replace("-----END PUBLIC KEY-----", '', $publicKeyStr);
+        $publicKeyStr = str_replace("\r\n", '', $publicKeyStr);
         return [
             'private' => $private->__toString(),
-            'public' => $public->__toString(),
+            'public' => $publicKeyStr,
         ];
     }
 }
