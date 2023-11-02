@@ -9,7 +9,7 @@
  */
 
 $console->add('init', 'InitCommand::run', 'Init');
-$console->add('user:add', 'UserCommand::run', 'Add a user');
+$console->add('user:add', 'UserCommand::run', 'Add/Update a user');
 $console->add('fmc', 'FillModelCommentCommand::run', 'Fill Model Comment');
 $console->add('serve', 'HttpServerCommand::run', 'Run a http server');
 $console->add('debug:routes', 'DebugCommand::routes', 'List all web routes');
