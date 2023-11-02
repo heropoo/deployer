@@ -57,7 +57,7 @@ class ConfigService
         $private = RSA::createKey();
         $privateKeyStr = $private->toString('OpenSSH');
         $public = $private->getPublicKey();
-        $publicKeyStr = $public->toString('OpenSSH');
+        $publicKeyStr = $public->toString('OpenSSH', ['comment' => 'deployer-generated-key']);
         return [
             'private' => $privateKeyStr,
             'public' => $publicKeyStr,
