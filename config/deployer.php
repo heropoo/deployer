@@ -18,6 +18,9 @@ return [
     //私钥
     'private_key' => '',
 
+    //公钥
+    'public_key' => '',
+
     //发布项目列表
     'projects' => [],
 

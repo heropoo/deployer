@@ -7,6 +7,8 @@
 namespace App\Services;
 
 
+use phpseclib3\Crypt\RSA;
+
 class ConfigService
 {
     public static function initConfig()
@@ -17,8 +19,20 @@ class ConfigService
             echo "Create local config './deployer.local.php' ";
             $local_config_content = file_get_contents($config_path . '/deployer.php');
             $new_secret_key = generate_random_str(32);
+
+            $key_res = self::createSSHKey();
+
             $local_config_content = str_replace(
-                "'secret_key' => ''", "'secret_key' => '{$new_secret_key}'",
+                [
+                    "'secret_key' => ''",
+                    "'private_key' => ''",
+                    "'public_key' => ''"
+                ],
+                [
+                    "'secret_key' => '{$new_secret_key}'",
+                    "'private_key' => '{$key_res['private']}'",
+                    "'public_key' => '{$key_res['public']}'",
+                ],
                 $local_config_content
             );
             $res = file_put_contents($config_path . '/deployer.local.php', $local_config_content);
@@ -36,5 +50,15 @@ class ConfigService
             $res = copy($config_path . '/hosts.php', $config_path . '/hosts.local.php');
             if ($res) echo " Ok\n"; else die(" Failed");
         }
+    }
+
+    protected static function createSSHKey()
+    {
+        $private = RSA::createKey();
+        $public = $private->getPublicKey();
+        return [
+            'private' => $private->__toString(),
+            'public' => $public->__toString(),
+        ];
     }
 }
