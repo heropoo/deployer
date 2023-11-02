@@ -60,6 +60,7 @@ class ConfigService
         $publicKeyStr = str_replace("-----BEGIN PUBLIC KEY-----", '', $publicKeyStr);
         $publicKeyStr = str_replace("-----END PUBLIC KEY-----", '', $publicKeyStr);
         $publicKeyStr = str_replace("\r\n", '', $publicKeyStr);
+        $publicKeyStr = 'ssh-rsa '.$publicKeyStr;
         return [
             'private' => $private->__toString(),
             'public' => $publicKeyStr,
