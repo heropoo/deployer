@@ -40,7 +40,7 @@ class PublishService
                 . " && cd {$project_config['path']}"
                 . " && echo '> git show --stat'"
                 . " && git show --stat"
-                . " && echo '> git reset --hard FETCH_HEAD && git fetch && git checkout {$project_config['branch']} && git pull --recurse-submodules'"
+                . " && echo '> git reset --hard FETCH_HEAD && git fetch && git checkout {$project_config['branch']} && git pull && git submodule sync && git submodule update --init'"
                 . " && git reset --hard FETCH_HEAD"
                 . " && git fetch && git checkout {$project_config['branch']}"
 //                . " && git pull --recurse-submodules"
