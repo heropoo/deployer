@@ -43,7 +43,8 @@ class PublishService
                 . " && echo '> git reset --hard FETCH_HEAD && git fetch && git checkout {$project_config['branch']} && git pull --recurse-submodules'"
                 . " && git reset --hard FETCH_HEAD"
                 . " && git fetch && git checkout {$project_config['branch']}"
-                . " && git pull --recurse-submodules"
+//                . " && git pull --recurse-submodules"
+                . " && git pull && git submodule sync && submodule update --init"
                 . " && echo '> git show --stat'"
                 . " && git show --stat";
             $msg_prefix = "git checkout files of project '{$project_config['name']}' on host ";
