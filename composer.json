@@ -29,6 +29,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "phpseclib/phpseclib": "^3.0",
-        "heropoo/moon": "^0.12"
+        "heropoo/moon": "^0.12",
+        "workerman/workerman": "^4.1"
     }
 }
