@@ -27,14 +27,18 @@ $http_worker->onMessage = function (TcpConnection $connection, HttpRequest $requ
     //$request->path();
     //$request->method();
 
-    var_dump(get_class($request));
+    //var_dump(get_class($request));
+    var_dump($request->path());
 
-    $indexHtml = file_get_contents(__DIR__.'/1.html');
+    $path = $request->path();
+    if($path == '/'){
+        $content = file_get_contents(__DIR__.'/1.html');
+        return $connection->send($content);
+    }
 
     // Send data to client
 //    $connection->send("Hello World");
-    $connection->send($indexHtml);
-
+    return $connection->send('404');
 };
 
 // -----------------------------------------------------------------
@@ -48,9 +52,16 @@ $ws_worker->onConnect = function ($connection) {
 };
 
 // Emitted when data received
-$ws_worker->onMessage = function ($connection, $data) {
+$ws_worker->onMessage = function (TcpConnection $connection, $data) {
+    var_dump("TcpConnection id: ", $connection->id);
+//    var_dump($data);
     // Send hello $data
-    $connection->send('Hello ' . $data);
+//    $connection->send('Hello ' . $data);
+    $msgData = [
+        'username' => '小美',
+        'msg' => '哈哈',
+    ];
+    $connection->send(json_encode($msgData));
 };
 
 // Emitted when connection closed
