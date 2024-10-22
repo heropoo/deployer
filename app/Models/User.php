@@ -12,5 +12,8 @@ namespace App\Models;
  * @package App\Models
  */
 class User{
-
+    public $username;
+    public $password;
+    public $create_time;
+    public $update_time;
 }
